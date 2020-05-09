@@ -23,6 +23,7 @@ from django.urls import path
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include('zend_django.urls')),
+    path('', include('catalogos.urls')),
 ]
 
 urlpatterns += static(
