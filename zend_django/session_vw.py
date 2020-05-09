@@ -75,7 +75,7 @@ class ImIn(View):
     trata de accesar a vistas para las cuales no se cuenta con permiso de
     acceso.
     """
-    html_template = "zend_django/html/html_struct.html"
+    html_template = "menus.html"
 
     def base_render(self, request):
         return render(request, self.html_template, {
