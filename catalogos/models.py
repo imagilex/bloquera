@@ -55,9 +55,9 @@ IDPRODUCTO_TYPE_Tuples = (
     )
 class Cat_M_Inventario(models.Model):
     IDProducto = models.CharField(max_length=30,blank=False, null=False,
-                 primary_key = True ,help_text='Ingrese su Clave de Producto',choices = IDPRODUCTO_TYPE_Tuples )
-    #Id producto terminado, Id materia prima y mezclas
-    IDTipoProducto = models.CharField(max_length=30,blank=False, null=False, default= "PRODUCTO TERMINADO") 
+                       primary_key = True ,help_text='Ingrese su Clave de Producto')
+    IDTipoProducto = models.CharField(max_length=30,blank=False, null=False,
+                       default= "PRODUCTO TERMINADO",choices = IDPRODUCTO_TYPE_Tuples ) 
     #-Producto Terminado, Materia Prima, Mezcla
     NombreProducto = models.CharField(max_length=150,blank=False,null=False)    
     IDFoto = models.ImageField(max_length=110,upload_to='Pictures',null=True)
