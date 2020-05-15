@@ -111,3 +111,189 @@ class Tbl_M_MovtosInventario(models.Model):
 def __str__(self):
         return self.IDProducto
 
+class Cat_M_Proveedores(models.Model):
+#Catalogo Proveedores
+    IDProveedor = models.CharField(max_length=30,blank=False, null=False,
+                       primary_key = True ,help_text='Ingrese Clave de Proveedor')
+    NombreProveedor = models.CharField(max_length=150,blank=False,null=False)    
+    Empresa = models.CharField(max_length=50,blank=False,null=False)    
+    Rfc = models.CharField(max_length=150,blank=False,null=False)    
+    DirFiscal = models.CharField(max_length=150,blank=False,null=False)    
+    Telefono1 = models.CharField(max_length=50,blank=False,null=False)    
+    Telefono2 = models.CharField(max_length=50,blank=False,null=False)    
+    Telefono3 = models.CharField(max_length=50,blank=False,null=False)
+    Email = models.EmailField()
+    ctlusuario = models.CharField(max_length=30,blank=False,null=False)    
+    ctlfecha = models.DateTimeField(default=timezone.now)
+
+def __str__(self):
+        return self.NombreProveedor
+
+class Cat_D_ProveedoresContactos(models.Model):
+#Contactos Proveedores
+    IDProveedor = models.ForeignKey(Cat_M_Proveedores, null= False, blank = False,
+                  on_delete = models.CASCADE,help_text='Ingrese Clave de Proveedor',
+                  )
+    NombreContacto = models.CharField(max_length=100,blank=False,null=False)    
+    CargoContacto = models.CharField(max_length=50,blank=False,null=False)    
+    SucursalContacto = models.CharField(max_length=50,blank=False,null=False)
+    DireccionContacto = models.TextField()    
+    Email = models.EmailField()    
+    Telefono1 = models.CharField(max_length=50,blank=False,null=False)    
+    Telefono2 = models.CharField(max_length=50,blank=False,null=False)    
+    Telefono3 = models.CharField(max_length=50,blank=False,null=False)
+    Comentarios = models.TextField()    
+    ctlusuario = models.CharField(max_length=30,blank=False,null=False)    
+    ctlfecha = models.DateTimeField(default=timezone.now)
+
+def __str__(self):
+         return self.NombreContacto
+
+class Cat_M_Clientes(models.Model):
+#Catalogo Cientes
+    IDCliente = models.CharField(max_length=30,blank=False, null=False,
+                       primary_key = True ,help_text='Ingrese Clave de Cliente')
+    NombreCliente = models.CharField(max_length=150,blank=False,null=False)    
+    NombreProveedor = models.CharField(max_length=150,blank=False,null=False)    
+    Empresa = models.CharField(max_length=50,blank=False,null=False)    
+    Rfc = models.CharField(max_length=150,blank=False,null=False)    
+    DirFiscal = models.CharField(max_length=150,blank=False,null=False)    
+    Email = models.EmailField()     
+    Telefono1 = models.CharField(max_length=50,blank=False,null=False)    
+    Telefono2 = models.CharField(max_length=50,blank=False,null=False)    
+    Telefono3 = models.CharField(max_length=50,blank=False,null=False) 
+    ctlusuario = models.CharField(max_length=30,blank=False,null=False)    
+    ctlFecha  = models.DateTimeField(default=timezone.now)
+
+def __str__(self):
+         return self.NombreCliente
+
+
+    
+class Cat_D_ClientesSucursales(models.Model):
+#Contactos Proveedores
+    IDCliente = models.ForeignKey(Cat_M_Clientes, null= False, blank = False,
+                  on_delete = models.CASCADE,help_text='Ingrese Clave de Cliente',
+                  )
+    NombreContacto = models.CharField(max_length=100,blank=False,null=False)    
+    Cargo = models.CharField(max_length=50,blank=False,null=False)    
+    Sucursal = models.CharField(max_length=50,blank=False,null=False)
+    Direccion = models.TextField()    
+    Email = models.EmailField()    
+    Telefono1 = models.CharField(max_length=50,blank=False,null=False)    
+    Telefono2 = models.CharField(max_length=50,blank=False,null=False)    
+    Telefono3 = models.CharField(max_length=50,blank=False,null=False)
+    Comentarios = models.TextField()    
+    ctlusuario = models.CharField(max_length=30,blank=False,null=False)    
+    ctlfecha = models.DateTimeField(default=timezone.now)
+
+def __str__(self):
+         return self.NombreContacto
+
+
+
+#Catalogo Prospectos
+#	Id Prospecto
+#	Nombre Completo
+#	ID Tipo Prospecto (Llego directo, Buscado)
+#	Para que necesita el material?
+#	Es constructora?
+#	Es casa de materiales?
+#	Que productos le interesan?
+#	Cantidad requerida?
+#	Fecha Registro
+#	Id Vendedor
+#	Id Publicidad
+#	Puesto
+#    E-mail = models.EmailField()    
+#    Telefono1 = models.CharField(max_length=50,blank=False,null=False)    
+#    Telefono2 = models.CharField(max_length=50,blank=False,null=False)    
+#    Telefono3 = models.CharField(max_length=50,blank=False,null=False)
+#	Dirección Fiscal
+#	Datos Fiscales Facturación
+#	Dirección Entrega 1
+#	Dirección Entrega 2
+#	Dirección Entrega 3
+#	Ultima Fecha Envió Catalogo
+#	Estatus
+#	Comentarios
+#    ctlusuario = models.CharField(max_length=30,blank=False,null=False)    
+#    ctlFecha  = models.DateTimeField(default=timezone.now)
+
+#Detalle SeguimientoProspectos
+#	Id Prospecto
+#	Fecha Seguimiento
+#	Próxima Fecha seguimiento
+#	Descripción Acuerdos
+#    ctlusuario = models.CharField(max_length=30,blank=False,null=False)    
+#    ctlFecha  = models.DateTimeField(default=timezone.now)
+
+#Catalogo Empleados
+#	ID Empleado
+#	ID HUELLA
+#	Nombre
+#	ID FOTO
+#	Dirección
+#	IMSS
+#	Rfc
+#    E-mail = models.EmailField()    
+#    Telefono1 = models.CharField(max_length=50,blank=False,null=False)    
+#	Periodo Pago (Días)
+#	Sueldo
+#	Tipo Empleado (Semanal/Quincenal)
+#	Horas extra(SI/NO)
+#	Área
+#	Monto por hora extra
+#	Puesto
+#    ctlusuario = models.CharField(max_length=30,blank=False,null=False)    
+#    ctlFecha  = models.DateTimeField(default=timezone.now)
+
+
+#Catalogo Fletes
+#	ID Flete
+#	Nombre
+#	Capacidad Mínima Tarimas
+#	Capacidad Máxima Tarimas
+#	Precio
+#	Kilómetros Distancia
+#	ID Proveedor
+#	Zona Estado
+#	Zona Municipios
+#	Días Hábiles
+#	Comentarios
+#    ctlusuario = models.CharField(max_length=30,blank=False,null=False)    
+#    ctlFecha  = models.DateTimeField(default=timezone.now)
+
+#Catalogo Vendedores
+#	ID Vendedor
+#	Nombre
+#	RFC
+#	Domicilio Fiscal
+#	Dirección
+#    E-mail = models.EmailField()    
+#    Telefono1 = models.CharField(max_length=50,blank=False,null=False)    
+#    Telefono2 = models.CharField(max_length=50,blank=False,null=False)    
+#	Zona Estado
+#	Zona Municipio
+#	Comentarios
+#    ctlusuario = models.CharField(max_length=30,blank=False,null=False)    
+#    ctlFecha  = models.DateTimeField(default=timezone.now)
+
+#Catalogo Cajas Bancos
+#	ID Caja Banco
+#	Descripción
+#	Sucursal Alta
+#	Dirección
+#	Numero Cuenta
+#	Nombre Banco
+#    EmailEjecutivo = models.EmailField()    
+#    Telefono1 = models.CharField(max_length=50,blank=False,null=False)    
+#    Telefono2 = models.CharField(max_length=50,blank=False,null=False)    
+    #	Clabe interbancaria
+#	Nombre Titular
+#	Tipo Cuenta
+#	Responsable
+#    ctlusuario = models.CharField(max_length=30,blank=False,null=False)    
+#    ctlFecha  = models.DateTimeField(default=timezone.now)
+
+
