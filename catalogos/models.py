@@ -295,7 +295,7 @@ class Cat_M_Empleado(models.Model):
     Nombre = models.CharField(max_length=100,blank=False,null=False)
     Foto = models.ImageField(max_length=110,upload_to='Pictures',null=True)
     Direccion = models.TextField()
-    Imss = models.CharField(max_length=30,blank=False,null=False)
+    NSS = models.CharField(max_length=30,blank=False,null=False)
     Rfc = models.CharField(max_length=30,blank=False,null=False)
     Email = models.EmailField()
     Telefono1 = models.CharField(max_length=50,blank=False,null=False)    
