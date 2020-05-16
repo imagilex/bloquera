@@ -52,7 +52,15 @@ INSTALLED_APPS = [
     'django.contrib.humanize',
 
     'zend_django',
-    'catalogos'
+    'catalogos',
+    'inventarios',
+    'compras',
+    'nomina',
+    'CtasxPagar',
+    'Prospectos',
+    'Ventas',
+    'Cobranza',
+    'EstadosFinancieros'
 ]
 
 MIDDLEWARE = [
