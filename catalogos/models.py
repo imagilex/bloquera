@@ -205,7 +205,7 @@ def __str__(self):
          return self.NombreCliente
   
 class Cat_D_ClientesSucursales(models.Model):
-#Contactos Proveedores
+#Clientes Sucursales
     IDCliente = models.ForeignKey(Cat_M_Clientes, null= False, blank = False,
                   on_delete = models.CASCADE,help_text='Ingrese Clave de Cliente',
                   )
