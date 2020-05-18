@@ -1,6 +1,6 @@
 from django.shortcuts import render
 from django.views import View
-
+from django.db.models import Q
 from .cat_m_cajabanco_forms import frmCat_M_CajaBanco as base_form
 from .models import Cat_M_CajaBanco as main_model
 

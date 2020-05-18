@@ -1,6 +1,8 @@
 from django.shortcuts import render
 from django.views import View
 
+from django.db.models import Q
+
 from .cat_m_flete_forms import frmCat_M_Flete as base_form
 from .models import Cat_M_Flete as main_model
 

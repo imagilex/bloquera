@@ -1,5 +1,6 @@
 from django.shortcuts import render
 from django.views import View
+from django.db.models import Q
 
 from .cat_m_vendedor_forms import frmCat_M_Vendedor as base_form
 from .models import Cat_M_Vendedor as main_model
