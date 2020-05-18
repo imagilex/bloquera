@@ -1,6 +1,6 @@
 from django.shortcuts import render
 from django.views import View
-
+from django.db.models import Q
 from .tbl_m_movtosinventario_forms import frmTbl_M_MovtosInventario as base_form
 from .models import Tbl_M_MovtosInventario as main_model
 

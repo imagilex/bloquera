@@ -4,6 +4,8 @@ from django.views import View
 from .cat_d_clientessucursales_forms import frmCat_D_ClientesSucursales as base_form
 from .models import Cat_D_ClientesSucursales as main_model
 
+from django.db.models import Q
+
 from zend_django.views import GenericCreate
 from zend_django.views import GenericDelete
 from zend_django.views import GenericList

@@ -1,6 +1,8 @@
 from django.shortcuts import render
 from django.views import View
 
+from django.db.models import Q 
+
 from .cat_m_inventario_forms import frmCat_M_Inventario as base_form
 from .models import Cat_M_Inventario as main_model
 
