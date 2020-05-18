@@ -1,6 +1,8 @@
 from django.shortcuts import render
 from django.views import View
 
+from django.db.models import Q
+
 from .cat_m_prospecto_forms import frmCat_M_Prospecto as base_form
 from .models import Cat_M_Prospecto as main_model
 

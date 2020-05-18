@@ -1,6 +1,6 @@
 from django.shortcuts import render
 from django.views import View
-
+from django.db.models import Q
 from .cat_m_proveedores_forms import frmCat_M_Proveedores as base_form
 from .models import Cat_M_Proveedores as main_model
 
@@ -30,7 +30,7 @@ class List(GenericList):
 
 class Read(GenericRead):
     titulo_descripcion = "Proveedores"
-    model_name = "cat_m_proveedor"
+    model_name = "cat_m_proveedores"
     base_data_form = base_form
     main_data_model = main_model
 
