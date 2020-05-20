@@ -9,9 +9,9 @@
         <tr>
 
          <th>IDPoducto</th>
-            <th>NombreProducto</th>
+            <th>Nombre del Producto</th>
             <th>IDFoto</th>
-            <th>ExistenciaActual</th>
+            <th>Existencia Actual</th>
             <th>Status</th>
             <th colspan="3" class="text-center">
                 {% if perms.catalogos.add_cat_m_inventario %}
@@ -25,9 +25,9 @@
     <tfoot>
         <tr>
          <th>IDPoducto</th>
-            <th>NombreProducto</th>
+            <th>Nombre del Producto</th>
             <th>IDFoto</th>
-            <th>ExistenciaActual</th>
+            <th>Existencia Actual</th>
             <th>Status</th>
             <th colspan="3" class="text-center">
                 {% if perms.catalogos.add_cat_m_inventario %}
@@ -45,7 +45,7 @@
                 <td>{{ reg.NombreProducto }}</td>
                 <td>
                 <img width="100"
-     height="100" src="{{MEDIA_URL}}{{ reg.IDFoto }}">
+                height="100" src="{{MEDIA_URL}}{{ reg.IDFoto }}">
                 </td>
                 <td>{{ reg.ExistenciaActual }}</td>
                 <td class="text-center">
