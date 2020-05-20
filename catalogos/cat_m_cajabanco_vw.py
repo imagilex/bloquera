@@ -26,7 +26,7 @@ class List(GenericList):
                 self.main_data_model.objects.all())
         else:
             return list(self.main_data_model.objects.filter(
-                Q(IDCajaBanco__icontains=search_value) | Q(Nombre__icontains=search_value)))
+                Q(IDCajaBanco__icontains=search_value) | Q(NombreCajaBanco__icontains=search_value)))
 
 class Read(GenericRead):
     titulo_descripcion = "Caja_banco"

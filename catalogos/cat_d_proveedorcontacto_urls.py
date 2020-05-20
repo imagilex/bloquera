@@ -1,9 +1,9 @@
 from django.contrib.auth.decorators import permission_required
 from django.urls import path
 
-import catalogos.cat_m_clientes_vw as views
+import catalogos.cat_d_proveedorcontacto_vw as views
 
-obj = 'cat_m_clientes'
+obj = 'cat_d_proveedorcontacto'
 app_label = 'catalogos'
 
 urlpatterns = [

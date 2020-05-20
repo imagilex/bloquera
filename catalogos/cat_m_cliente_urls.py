@@ -1,9 +1,9 @@
 from django.contrib.auth.decorators import permission_required
 from django.urls import path
 
-import catalogos.tbl_m_movtosinventario_vw as views
+import catalogos.cat_m_cliente_vw as views
 
-obj = 'tbl_movtosinventario'
+obj = 'cat_m_cliente'
 app_label = 'catalogos'
 
 urlpatterns = [

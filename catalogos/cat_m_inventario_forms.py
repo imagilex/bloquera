@@ -22,6 +22,6 @@ class frmCat_M_Inventario(forms.ModelForm):
             'Preciocostoultimacompra',
             'Preciovtaultimaproduccion',
             'Preciovtaunitarioultimaproduccion',
-            'Status',
+            'Estatus',
 
         ]

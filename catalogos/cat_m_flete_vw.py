@@ -26,7 +26,7 @@ def get_data(self, search_value=''):
                 self.main_data_model.objects.all())
         else:
             return list(self.main_data_model.objects.filter(
-                Q(IDFlete__icontains=search_value) | Q(Nombre__icontains=search_value)))
+                Q(IDFlete__icontains=search_value) | Q(NombreFlete__icontains=search_value)))
 
 class Read(GenericRead):
     titulo_descripcion = "Flete"
