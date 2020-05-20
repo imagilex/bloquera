@@ -67,8 +67,8 @@ ESTATUS_PROSPECTO_TYPE = {
 }
 
 ESTATUS_PROSPECTO_TYPE_Tuples = (
-        (ESTATUS_PROSPECTO_TYPE['VIGENTE'], 'SI'),
-        (ESTATUS_PROSPECTO_TYPE['CANCELADO'], 'NO'),
+        (ESTATUS_PROSPECTO_TYPE['VIGENTE'], 'VIGENTE'),
+        (ESTATUS_PROSPECTO_TYPE['CANCELADO'], 'CANCELADO'),
         (ESTATUS_PROSPECTO_TYPE['ALTA_CLIENTE'], 'ALTA_CLIENTE'),
     )
 
@@ -109,29 +109,27 @@ class Cat_M_Inventario(models.Model):
     ctlusuario = models.CharField(max_length=30,blank=False,null=False)    
     ctlFecha  = models.DateTimeField(default=timezone.now)
 
-def __str__(self):
+    def __str__(self):
         return self.NombreProducto
     
-class Tbl_M_MovtosInventario(models.Model):
-# Movimientos  Inventario)
-    IDPeriodo  = models.IntegerField(blank= False,null= False,help_text='Ingrese 99-mes-99anio')
-    IDMovimiento = models.IntegerField(blank= False,null= False,help_text='Consecutivo numerico')
-    IDProducto = models.CharField(max_length=30,blank=False, null=False, primary_key = True ,help_text='Ingrese su Clave de Producto')
-    IDPlanProducción = models.CharField(max_length=30,blank=False, null=False,
-                       help_text='Ingrese su Clave dePlan produccion recomendacion ddmmaa')
-    IDVentaIDMovimiento = models.IntegerField(blank= False,null= False,help_text='Consecutivo del maestro de ventas')
-    IDCompra  = models.IntegerField(blank= False,null= False,help_text='Consecutivo del maestro de compras')
-    IDTipoMovimiento = models.IntegerField(blank= False,null= False,help_text='SOLO ELIGE TIPO MOVIMIENTO')
-    FechaMovto = models.DateTimeField(default=timezone.now)
-    Cantidad = models.DecimalField(blank=True, null=False, default= 0,
-                   max_digits=2,decimal_places=0) 
-    Observaciones = models.CharField(max_length=150,blank=False,null=False)    
-    IdEmpleado = models.CharField(max_length=30,blank=False,null=False)    
+
+class Cat_M_Vendedor(models.Model):
+#Catalogo Vendedores
+    IDVendedor = models.CharField(max_length=30,blank=False, null=False,
+                       primary_key = True ,help_text='Ingrese Clave de Vendedor')
+    NombreVendedor = models.CharField(max_length=100,blank=False,null=False)
+    Direccion = models.TextField()
+    Rfc = models.CharField(max_length=30,blank=False,null=False)
+    Email = models.EmailField()
+    Telefono1 = models.CharField(max_length=50,blank=False,null=False)    
+    Telefono2 = models.CharField(max_length=50,blank=True,null=False)    
+    Telefono3 = models.CharField(max_length=50,blank=True,null=False)
+    Comentarios = models.TextField()
     ctlusuario = models.CharField(max_length=30,blank=False,null=False)    
     ctlfecha = models.DateTimeField(default=timezone.now)
 
-def __str__(self):
-        return self.IDProducto
+    def __str__(self):
+        return self.NombreVendedor
 
 class Cat_M_Proveedores(models.Model):
 #Catalogo Proveedores
@@ -148,7 +146,7 @@ class Cat_M_Proveedores(models.Model):
     ctlusuario = models.CharField(max_length=30,blank=False,null=False)    
     ctlfecha = models.DateTimeField(default=timezone.now)
 
-def __str__(self):
+    def __str__(self):
         return self.NombreProveedor
 
 class Cat_D_ProveedoresContactos(models.Model):
@@ -168,7 +166,7 @@ class Cat_D_ProveedoresContactos(models.Model):
     ctlusuario = models.CharField(max_length=30,blank=False,null=False)    
     ctlfecha = models.DateTimeField(default=timezone.now)
 
-def __str__(self):
+    def __str__(self):
          return self.NombreContacto
 
 class Cat_M_Clientes(models.Model):
@@ -176,7 +174,10 @@ class Cat_M_Clientes(models.Model):
     IDCliente = models.CharField(max_length=30,blank=False, null=False,
                        primary_key = True ,help_text='Ingrese Clave de Cliente')
     NombreCliente = models.CharField(max_length=100,blank=False,null=False)    
-    NombreProveedor = models.CharField(max_length=100,blank=False,null=False)    
+    NombreVendedor = models.ForeignKey(Cat_M_Vendedores, null= False, blank = False,
+                  on_delete = models.CASCADE,help_text='Seleccione Vendedor',
+                  )
+    #models.CharField(max_length=100,blank=False,null=False)    
     Empresa = models.CharField(max_length=100,blank=False,null=False)    
     Rfc = models.CharField(max_length=30,blank=False,null=False)
     DirFiscal = models.CharField(max_length=150,blank=False,null=False)    
@@ -187,13 +188,13 @@ class Cat_M_Clientes(models.Model):
     ctlusuario = models.CharField(max_length=30,blank=False,null=False)    
     ctlFecha  = models.DateTimeField(default=timezone.now)
 
-def __str__(self):
+    def __str__(self):
          return self.NombreCliente
   
 class Cat_D_ClientesSucursales(models.Model):
 #Clientes Sucursales
     IDCliente = models.ForeignKey(Cat_M_Clientes, null= False, blank = False,
-                  on_delete = models.CASCADE,help_text='Ingrese Clave de Cliente',
+                  on_delete = models.CASCADE,help_text='Ingrese Cliente',
                   )
     NombreContacto = models.CharField(max_length=100,blank=False,null=False)
     Cargo = models.CharField(max_length=50,blank=False,null=False)    
@@ -207,7 +208,7 @@ class Cat_D_ClientesSucursales(models.Model):
     ctlusuario = models.CharField(max_length=30,blank=False,null=False)    
     ctlfecha = models.DateTimeField(default=timezone.now)
 
-def __str__(self):
+    def __str__(self):
          return self.NombreContacto
 
 class Cat_M_Vendedor(models.Model):
@@ -225,13 +226,15 @@ class Cat_M_Vendedor(models.Model):
     ctlusuario = models.CharField(max_length=30,blank=False,null=False)    
     ctlfecha = models.DateTimeField(default=timezone.now)
 
+    def __str__(self):
+        return self.NombreVendedor
 
 
 class Cat_M_Prospecto(models.Model):
 #Catalogo Prospectos
     IDProspecto = models.CharField(max_length=30,blank=False, null=False,
                        primary_key = True ,help_text='Ingrese Clave Prospecto')
-    Nombre = models.CharField(max_length=100,blank=False,null=False)
+    NombreProspecto = models.CharField(max_length=100,blank=False,null=False)
     TipoCaptacion = models.CharField(max_length=30,blank=False, null=False,
                        default= "DIRECTO",choices = CAPTACION_CTE_TYPE_Tuples ) 
                       #'DIRECTO', 'VENDEDOR','PAGINA_WEB', 'OTROS',
@@ -259,12 +262,18 @@ class Cat_M_Prospecto(models.Model):
     ctlusuario = models.CharField(max_length=30,blank=False,null=False)    
     ctlfecha = models.DateTimeField(default=timezone.now)
 
+    def __str__(self):
+        return self.NombreProspecto
+
 class Cat_D_Prospecto(models.Model):
 #Detalle SeguimientoProspectos
-    IDProspecto = models.ForeignKey(Cat_M_Vendedor, null= False, blank = True,
-                  on_delete = models.CASCADE,help_text='Ingrese ID Prospecto',
+    #IDProspecto = models.ForeignKey(Cat_M_Vendedor, null= False, blank = True,
+     #             on_delete = models.CASCADE,help_text='Ingrese ID Prospecto',
+     #             )
+    Prospecto = models.ForeignKey(Cat_M_Prospecto, null= False, blank = True,
+                  on_delete = models.CASCADE,help_text='Ingrese Prospecto',
                   )
-    Nombre = models.CharField(max_length=100,blank=False,null=False)    
+#models.CharField(max_length=100,blank=False,null=False)    
 #	Id Prospecto
     FechaNota = models.DateTimeField(default=timezone.now)
     ProximoSeguimiento = models.DateTimeField(default=timezone.now)
@@ -274,11 +283,14 @@ class Cat_D_Prospecto(models.Model):
     ctlusuario = models.CharField(max_length=30,blank=False,null=False)
     ctlfecha = models.DateTimeField(default=timezone.now)
 
+    def __str__(self):
+        return self.NombreProspecto
+
 class Cat_M_Empleado(models.Model):
 #Catalogo Empleados
     IDEmpleado = models.CharField(max_length=30,blank=False, null=False,
                        primary_key = True ,help_text='Ingrese Clave Prospecto')
-    Nombre = models.CharField(max_length=100,blank=False,null=False)
+    NombreEmpleado = models.CharField(max_length=100,blank=False,null=False)
     Foto = models.ImageField(max_length=110,upload_to='Pictures',null=True)
     Direccion = models.TextField()
     NSS = models.CharField(max_length=30,blank=False,null=False)
@@ -299,11 +311,15 @@ class Cat_M_Empleado(models.Model):
     ctlusuario = models.CharField(max_length=30,blank=False,null=False)
     ctlfecha = models.DateTimeField(default=timezone.now)
 
+    def __str__(self):
+        return self.NombreEmpleado
+
+
 class Cat_M_Flete(models.Model):
 #Catalogo Fletes
     IDFlete = models.CharField(max_length=30,blank=False, null=False,
                        primary_key = True ,help_text='Ingrese Clave Flete')
-    Nombre = models.CharField(max_length=100,blank=False,null=False)
+    NombreFlete = models.CharField(max_length=100,blank=False,null=False)
     #	ID Proveedor
     NombreProveedor = models.ForeignKey(Cat_M_Proveedores, null= False, blank = True,
                   on_delete = models.CASCADE,
@@ -318,11 +334,15 @@ class Cat_M_Flete(models.Model):
     ctlusuario = models.CharField(max_length=30,blank=False,null=False)    
     ctlfecha = models.DateTimeField(default=timezone.now)
 
+    def __str__(self):
+        return self.NombreFlete
+
+
 class Cat_M_CajaBanco(models.Model):
 #Catalogo Cajas Bancos
     IDCajaBanco = models.CharField(max_length=30,blank=False, null=False,
                        primary_key = True ,help_text='Ingrese Clave Caja/Banco')
-    Nombre = models.CharField(max_length=100,blank=False,null=False)
+    NombreCajaBanco = models.CharField(max_length=100,blank=False,null=False)
     Sucursal = models.CharField(max_length=50,blank=True,null=False)
     Direccion = models.CharField(max_length=100,blank=True,null=False)
     Num_CLABE = models.CharField(max_length=30,blank=True,null=False)
@@ -335,3 +355,6 @@ class Cat_M_CajaBanco(models.Model):
     Telefono2 = models.CharField(max_length=50,blank=True,null=False)    
     ctlusuario = models.CharField(max_length=30,blank=False,null=False)    
     ctlfecha = models.DateTimeField(default=timezone.now)
+
+    def __str__(self):
+        return self.NombreCajaBanco
