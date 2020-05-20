@@ -21,13 +21,13 @@ class List(GenericList):
     main_data_model = main_model
     model_name = "cat_m_empleado"
 
-def get_data(self, search_value=''):
-        if '' == search_value:
-            return list(
-                self.main_data_model.objects.all())
-        else:
-            return list(self.main_data_model.objects.filter(
-                Q(IDEmpleado__icontains=search_value) | Q(Nombre__icontains=search_value)))
+    def get_data(self, search_value=''):
+            if '' == search_value:
+                return list(
+                    self.main_data_model.objects.all())
+            else:
+                return list(self.main_data_model.objects.filter(
+                    Q(IDEmpleado__icontains=search_value) | Q(Nombre__icontains=search_value)))
 
 class Read(GenericRead):
     titulo_descripcion = "empleado"

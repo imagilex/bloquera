@@ -243,7 +243,7 @@ class Cat_M_Prospecto(models.Model):
                        help_text='Nombre Casa Materiales' )
     ProductosInteres = models.TextField( help_text='Productos de Interes, Incluyendo Cantidades')
     FechaRegistro = models.DateTimeField(default=timezone.now)
-    NombreVendedor = models.ForeignKey(Cat_M_Vendedor, null= False, blank = True,
+    NombreVendedor = models.ForeignKey(Cat_M_Vendedor, null= False, blank = False,
                   on_delete = models.CASCADE,help_text='Ingrese Vendedor',
                   )
     Puesto = models.CharField(max_length=50,blank=True, null=True)
