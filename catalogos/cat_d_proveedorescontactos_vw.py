@@ -16,7 +16,7 @@ def template_base_path(file):
 class List(GenericList):
     html_template = template_base_path("list")
     titulo = "Proveedores_contactos"
-    titulo_descripcion = "Catalogo"
+    titulo_descripcion = "Contactos Proveedores"
     main_data_model = main_model
     model_name = "cat_d_proveedorescontactos"
 
