@@ -2,12 +2,32 @@
 {% load i18n %}
 {% load op_helpers %}
 {% block content %}
- <a href="{% url "cat_m_inventario_list" %}">Inventarios </a>
- <a href="{% url "cat_m_clientes_list" %}">Clientes</a>
- <a href="{% url "cat_m_proveedores_list" %}">Proveedores</a>
- <a href="{% url "cat_m_prospecto_list" %}">Prospecto</a>
- <a href="{% url "cat_m_vendedor_list" %}">Vendedores</a>
- <a href="{% url "cat_m_empleado_list" %}">Empleado</a>
- <a href="{% url "cat_m_flete_list" %}">Fletes</a>
- <a href="{% url "cat_m_cajabanco_list" %}">Caja Banco</a>
+
+<div class="container2">
+    <li class="lista">
+        <a href="{% url "cat_m_inventario_list" %}">Inventarios</a>
+        </li>
+    <li class="lista">
+        <a href="{% url "cat_m_clientes_list" %}">Clientes</a>
+        </li>
+    <li class="lista">
+        <a href="{% url "cat_m_proveedores_list" %}">Proveedores</a>
+        </li>
+    <li class="lista">
+        <a href="{% url "cat_m_prospecto_list" %}">Prospectos</a>
+        </li>
+    <li class="lista">
+        <a href="{% url "cat_m_vendedor_list" %}">Vendedores</a>
+        </li>
+    <li class="lista">
+        <a href="{% url "cat_m_empleado_list" %}">Empleados</a>
+        </li>
+    <li class="lista">    
+        <a href="{% url "cat_m_flete_list" %}">Fletes</a>
+        </li>
+    <li class="lista">    
+        <a href="{% url "cat_m_cajabanco_list" %}">Caja Banco</a>
+        </li>
+    </li>
+</div>
 {% endblock %}
