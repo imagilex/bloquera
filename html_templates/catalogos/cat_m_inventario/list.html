@@ -47,7 +47,7 @@
                 <img width="100"
      height="100" src="{{MEDIA_URL}}{{ reg.IDFoto }}">
                 </td>
-                <td>{{ reg.ExistenciaActual }}</td>
+                <td>{{ reg.Status }}</td>
                 <td class="text-center">
                     {% if perms.catalogos.view_cat_m_inventario %}
                     <a data-action="read" href="{% url 'cat_m_inventario_read' pk=reg.pk %}" class="btn btn-outline-secondary" role="button" title="{% crud_label 'read' %}">

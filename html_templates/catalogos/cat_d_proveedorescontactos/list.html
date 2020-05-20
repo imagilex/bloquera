@@ -44,6 +44,7 @@
                 <td>{{ reg.NombreContacto }}</td>
                 <td> {{ reg.CargoContacto }}</td>
                 <td>{{ reg.DireccionContacto}}</td>
+                <td>{{ reg.Telefono}}</td>
                 <td class="text-center">
                     {% if perms.catalogos.view_cat_d_proveedorescontactos %}
                     <a data-action="read" href="{% url 'cat_d_proveedorescontactos_read' pk=reg.pk %}" class="btn btn-outline-secondary" role="button" title="{% crud_label 'read' %}">
