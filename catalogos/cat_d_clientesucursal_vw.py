@@ -32,6 +32,8 @@ class List(GenericList):
             return list(data.filter(
                 Q(IDCliente__icontains=search_value) | Q(NombreContacto__icontains=search_value)))
     
+    #CAMBIOS RUBEN
+    
     def get(self, request, pkcliente):
         search_value = ParametroUsuario.get_valor(
             request.user, 'basic_search', self.model_name)
