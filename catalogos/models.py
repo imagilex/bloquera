@@ -8,7 +8,7 @@ from django.utils import timezone
              #db_index = true en campos que son indices
 #PrimaryKey('.IDProUser', on_delete=models.CASCADE)
 
-STATUS_TYPE = {
+ESTATUS_TYPE = {
     'VIGENTE': 'VIGENTE',
     'DESCONTINUADO': 'DESCONTINUADO',
     'CANCELADO': 'CANCELADO',
@@ -16,11 +16,11 @@ STATUS_TYPE = {
     
 }
 
-STATUS_TYPE_Tuples = (
-        (STATUS_TYPE['VIGENTE'], 'VIGENTE'),
-        (STATUS_TYPE['DESCONTINUADO'], 'DESCONTINUADO'),
-        (STATUS_TYPE['CANCELADO'], 'CANCELADO'),
-        (STATUS_TYPE['SUSPENDIDO'], 'SUSPENDIDO'),
+ESTATUS_TYPE_Tuples = (
+        (ESTATUS_TYPE['VIGENTE'], 'VIGENTE'),
+        (ESTATUS_TYPE['DESCONTINUADO'], 'DESCONTINUADO'),
+        (ESTATUS_TYPE['CANCELADO'], 'CANCELADO'),
+        (ESTATUS_TYPE['SUSPENDIDO'], 'SUSPENDIDO'),
         
     )
 
@@ -104,7 +104,7 @@ class Cat_M_Inventario(models.Model):
     Preciovtaunitarioultimaproduccion = models.DecimalField(blank=True, null=False, default= 0,
                        max_digits=8,decimal_places=2) 
     Estatus = models.CharField(blank=False, null=False, max_length=20,
-                       default = "VIGENTE", choices = STATUS_TYPE_Tuples )
+                       default = "VIGENTE", choices = ESTATUS_TYPE_Tuples )
                        #VIGENTE,DESCONTINUADO,CANCELADO Y SUSPENDIDO
     ctlusuario = models.CharField(max_length=30,blank=False,null=False)    
     ctlFecha  = models.DateTimeField(default=timezone.now)
