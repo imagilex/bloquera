@@ -27,6 +27,23 @@ class List(GenericList):
         else:
             return list(self.main_data_model.objects.filter(
                 Q(IDCliente__icontains=search_value) | Q(NombreContacto__icontains=search_value)))
+    
+    #CAMBIOS RUBEN 19 MAY0
+    
+    def get(self, request, pkcliente):
+        search_value = ParametroUsuario.get_valor(
+            request.user, 'basic_search', self.model_name)
+        return self.base_render(
+            request, self.get_data(pkcliente, search_value), search_value)
+      
+    def post(self, request, pkcliente):
+        if "search" == request.POST.get('action', ''):
+            search_value = request.POST.get('valor', '')
+        else:
+            search_value = ParametroUsuario.get_valor(
+                request.user, 'basic_search', self.model_name)
+        return self.base_render(
+            request, self.get_data(pkcliente, search_value), search_value)
 
 class Read(GenericRead):
     titulo_descripcion = "Clientes_sucursales"
