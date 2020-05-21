@@ -6,8 +6,7 @@ class frmCat_D_Prospecto(forms.ModelForm):
     class Meta:
         model = Cat_D_Prospecto
         fields = [
-            'IDProspecto',
-            'Nombre',
+            'Prospecto',
             'FechaNota',
             'ProximoSeguimiento',
             'Seguimiento',

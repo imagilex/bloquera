@@ -7,7 +7,7 @@ class frmCat_M_CajaBanco(forms.ModelForm):
         model = Cat_M_CajaBanco
         fields = [
             'IDCajaBanco',
-            'Nombre',
+            'NombreCajaBanco',
             'Sucursal',
             'Direccion',
             'Num_CLABE',

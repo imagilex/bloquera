@@ -11,7 +11,7 @@ from zend_django.views import GenericRead
 from zend_django.views import GenericUpdate
 
 def template_base_path(file):
-    return 'catalogos/tbl_m_movtosinventario/' + file + ".html"
+    return 'inventarios/tbl_m_movtosinventario/' + file + ".html"
 
 class List(GenericList):
     html_template = template_base_path("list")

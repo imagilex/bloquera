@@ -1,10 +1,10 @@
 from django import forms
-from .models import Cat_D_ClientesSucursales
+from .models import Cat_D_ClienteSucursal
 
-class frmCat_D_ClientesSucursales(forms.ModelForm):
+class frmCat_D_ClienteSucursal(forms.ModelForm):
 
     class Meta:
-        model = Cat_D_ClientesSucursales
+        model = Cat_D_ClienteSucursal
         fields = [
             'IDCliente',
             'NombreContacto',
@@ -13,7 +13,7 @@ class frmCat_D_ClientesSucursales(forms.ModelForm):
             'Direccion',
             'Email',
             'Telefono1',
+            'WhatsApp',
             'Telefono2',
-            'Telefono3',
             'Comentarios',
         ]
