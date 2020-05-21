@@ -37,7 +37,7 @@ class List(GenericList):
             request.user, 'basic_search', self.model_name)
         return self.base_render(
             request, self.get_data(pkcliente, search_value), search_value)
-
+      
     def post(self, request, pkcliente):
         if "search" == request.POST.get('action', ''):
             search_value = request.POST.get('valor', '')
