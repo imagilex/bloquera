@@ -11,6 +11,8 @@ from zend_django.views import GenericList
 from zend_django.views import GenericRead
 from zend_django.views import GenericUpdate
 
+from zend_django.parametros_models import ParametroUsuario
+
 def template_base_path(file):
     return 'catalogos/cat_d_prospecto/' + file + ".html"
 
@@ -28,6 +30,22 @@ class List(GenericList):
         else:
             return list(self.main_data_model.objects.filter(
                 Q(IDProspecto__icontains=search_value) | Q(Nombre__icontains=search_value)))
+    
+    def get(self, request, pkcliente):
+            search_value = ParametroUsuario.get_valor(
+                request.user, 'basic_search', self.model_name)
+            return self.base_render(
+                request, self.get_data(pkcliente, search_value), search_value)
+
+    def post(self, request, pkcliente):
+        if "search" == request.POST.get('action', ''):
+            search_value = request.POST.get('valor', '')
+        else:
+            search_value = ParametroUsuario.get_valor(
+                request.user, 'basic_search', self.model_name)
+        return self.base_render(
+            request, self.get_data(pkcliente, search_value), search_value)
+
 
 class Read(GenericRead):
     titulo_descripcion = "Detalle_Prospecto"

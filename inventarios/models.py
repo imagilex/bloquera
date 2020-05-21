@@ -1,7 +1,6 @@
 from django.db import models
 from django.utils import timezone
-
-from inventarios.models import Cat_M_Inventario
+from catalogos.models import Cat_M_Inventario
 
 ESTATUS_PERIODO_TYPE = {
     '052020': '052020',
@@ -80,7 +79,7 @@ class Tbl_M_Formula(models.Model):
     EstatusFormula = models.IntegerField(blank= False,null= False,
                       choices =FORMULA_TYPE_Tuples)  
     FechaLiberacion = models.DateTimeField(default=timezone.now)
-    kilosMermaAprox = models.DecimalField()
+    kilosMermaAprox = models.DecimalField(max_digits=11,decimal_places=2,default = 0, null =False,blank=False)
     Observaciones = models.TextField()    
     ctlusuario = models.CharField(max_length=30,blank=False,null=False)    
     ctlfecha = models.DateTimeField(default=timezone.now)
