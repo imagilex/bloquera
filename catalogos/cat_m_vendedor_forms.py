@@ -12,8 +12,8 @@ class frmCat_M_Vendedor(forms.ModelForm):
             'Rfc',
             'Email',
             'Telefono1',
+            'WhatsApp',
             'Telefono2',
-            'Telefono3',
             'Comentarios',
         ]
         

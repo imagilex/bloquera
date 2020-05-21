@@ -1,10 +1,10 @@
 from django.contrib.auth.decorators import permission_required
 from django.urls import path
 
-import catalogos.cat_m_proveedores_vw as views
+import inventarios.tbl_m_movtosinventario_vw as views
 
-obj = 'cat_m_proveedores'
-app_label = 'catalogos'
+obj = 'tbl_movtosinventario'
+app_label = 'inventarios'
 
 urlpatterns = [
     path('', permission_required(
@@ -22,5 +22,4 @@ urlpatterns = [
     path('<pk>/', permission_required(
         f'{app_label}.view_{obj}')(views.Read.as_view()),
         name=f"{obj}_read"),
-
 ]

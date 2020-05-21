@@ -7,7 +7,7 @@ class frmCat_M_Prospecto(forms.ModelForm):
         model = Cat_M_Prospecto
         fields = [
             'IDProspecto',
-            'Nombre',
+            'NombreProspecto',
             'TipoCaptacion',
             'UsoMaterial',
             'Constructora',
@@ -18,8 +18,8 @@ class frmCat_M_Prospecto(forms.ModelForm):
             'Puesto',
             'Email',
             'Telefono1',
+            'WhatsApp',
             'Telefono2',
-            'Telefono3',
             'Direccion',
             'Estatus',
             'Comentarios',

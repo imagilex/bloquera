@@ -103,7 +103,7 @@ class Cat_M_Inventario(models.Model):
                        max_digits=8,decimal_places=2) 
     Preciovtaunitarioultimaproduccion = models.DecimalField(blank=True, null=False, default= 0,
                        max_digits=8,decimal_places=2) 
-    Status = models.CharField(blank=False, null=False, max_length=20,
+    Estatus = models.CharField(blank=False, null=False, max_length=20,
                        default = "VIGENTE", choices = STATUS_TYPE_Tuples )
                        #VIGENTE,DESCONTINUADO,CANCELADO Y SUSPENDIDO
     ctlusuario = models.CharField(max_length=30,blank=False,null=False)    
@@ -117,13 +117,13 @@ class Cat_M_Vendedor(models.Model):
 #Catalogo Vendedores
     IDVendedor = models.CharField(max_length=30,blank=False, null=False,
                        primary_key = True ,help_text='Ingrese Clave de Vendedor')
-    NombreVendedor = models.CharField(max_length=100,blank=False,null=False)
+    NombreVendedor = models.CharField(max_length=150,blank=False,null=False)
     Direccion = models.TextField()
     Rfc = models.CharField(max_length=30,blank=False,null=False)
     Email = models.EmailField()
-    Telefono1 = models.CharField(max_length=50,blank=False,null=False)    
-    Telefono2 = models.CharField(max_length=50,blank=True,null=False)    
-    Telefono3 = models.CharField(max_length=50,blank=True,null=False)
+    Telefono1 = models.CharField(max_length=50,blank=False,null=False,default = 0)    
+    WhatsApp = models.CharField(max_length=50,blank=True,null=False,default = 0)    
+    Telefono2 = models.CharField(max_length=50,blank=True,null=False,default = 0)
     Comentarios = models.TextField()
     ctlusuario = models.CharField(max_length=30,blank=False,null=False)    
     ctlfecha = models.DateTimeField(default=timezone.now)
@@ -131,7 +131,7 @@ class Cat_M_Vendedor(models.Model):
     def __str__(self):
         return self.NombreVendedor
 
-class Cat_M_Proveedores(models.Model):
+class Cat_M_Proveedor(models.Model):
 #Catalogo Proveedores
     IDProveedor = models.CharField(max_length=30,blank=False, null=False,
                        primary_key = True ,help_text='Ingrese Clave de Proveedor')
@@ -140,7 +140,7 @@ class Cat_M_Proveedores(models.Model):
     Rfc = models.CharField(max_length=30,blank=False,null=False)    
     DirFiscal = models.CharField(max_length=150,blank=False,null=False)    
     Telefono1 = models.CharField(max_length=50,blank=False,null=False)    
-    Telefono2 = models.CharField(max_length=50,blank=True,null=False)    
+    WhatsApp = models.CharField(max_length=50,blank=True,null=False)    
     Telefono3 = models.CharField(max_length=50,blank=True,null=False)
     Email = models.EmailField()
     ctlusuario = models.CharField(max_length=30,blank=False,null=False)    
@@ -149,9 +149,9 @@ class Cat_M_Proveedores(models.Model):
     def __str__(self):
         return self.NombreProveedor
 
-class Cat_D_ProveedoresContactos(models.Model):
+class Cat_D_ProveedorContacto(models.Model):
 #Contactos Proveedores
-    IDProveedor = models.ForeignKey(Cat_M_Proveedores, null= False, blank = False,
+    IDProveedor = models.ForeignKey(Cat_M_Proveedor, null= False, blank = False,
                   on_delete = models.CASCADE,help_text='Ingrese Clave de Proveedor',
                   )
     NombreContacto = models.CharField(max_length=100,blank=False,null=False)    
@@ -160,8 +160,8 @@ class Cat_D_ProveedoresContactos(models.Model):
     DireccionContacto = models.TextField()    
     Email = models.EmailField()    
     Telefono1 = models.CharField(max_length=50,blank=False,null=False)    
-    Telefono2 = models.CharField(max_length=50,blank=True,null=False)    
-    Telefono3 = models.CharField(max_length=50,blank=True,null=False)
+    WhatsApp = models.CharField(max_length=50,blank=True,null=False)    
+    Telefono2 = models.CharField(max_length=50,blank=True,null=False)
     Comentarios = models.TextField()    
     ctlusuario = models.CharField(max_length=30,blank=False,null=False)    
     ctlfecha = models.DateTimeField(default=timezone.now)
@@ -169,31 +169,30 @@ class Cat_D_ProveedoresContactos(models.Model):
     def __str__(self):
          return self.NombreContacto
 
-class Cat_M_Clientes(models.Model):
+class Cat_M_Cliente(models.Model):
 #Catalogo Cientes
     IDCliente = models.CharField(max_length=30,blank=False, null=False,
                        primary_key = True ,help_text='Ingrese Clave de Cliente')
-    NombreCliente = models.CharField(max_length=100,blank=False,null=False)    
-    NombreVendedor = models.ForeignKey(Cat_M_Vendedores, null= False, blank = False,
-                  on_delete = models.CASCADE,help_text='Seleccione Vendedor',
-                  )
+    NombreCliente = models.CharField(max_length=100,blank=False,null=False) 
+    NombreVendedor = models.ForeignKey(Cat_M_Vendedor, null= False, blank = False,
+                  on_delete = models.CASCADE,help_text='Seleccione Vendedor',)
     #models.CharField(max_length=100,blank=False,null=False)    
     Empresa = models.CharField(max_length=100,blank=False,null=False)    
     Rfc = models.CharField(max_length=30,blank=False,null=False)
     DirFiscal = models.CharField(max_length=150,blank=False,null=False)    
     Email = models.EmailField()     
     Telefono1 = models.CharField(max_length=50,blank=False,null=False)    
-    Telefono2 = models.CharField(max_length=50,blank=True,null=False)    
-    Telefono3 = models.CharField(max_length=50,blank=True,null=False)
+    WhatsApp = models.CharField(max_length=50,blank=True,null=False)    
+    Telefono2 = models.CharField(max_length=50,blank=True,null=False)
     ctlusuario = models.CharField(max_length=30,blank=False,null=False)    
     ctlFecha  = models.DateTimeField(default=timezone.now)
 
     def __str__(self):
          return self.NombreCliente
   
-class Cat_D_ClientesSucursales(models.Model):
+class Cat_D_ClienteSucursal(models.Model):
 #Clientes Sucursales
-    IDCliente = models.ForeignKey(Cat_M_Clientes, null= False, blank = False,
+    IDCliente = models.ForeignKey(Cat_M_Cliente, null= False, blank = False,
                   on_delete = models.CASCADE,help_text='Ingrese Cliente',
                   )
     NombreContacto = models.CharField(max_length=100,blank=False,null=False)
@@ -202,33 +201,14 @@ class Cat_D_ClientesSucursales(models.Model):
     Direccion = models.TextField()
     Email = models.EmailField()
     Telefono1 = models.CharField(max_length=50,blank=False,null=False)    
-    Telefono2 = models.CharField(max_length=50,blank=True,null=False)    
-    Telefono3 = models.CharField(max_length=50,blank=True,null=False)
+    WhatsApp = models.CharField(max_length=50,blank=True,null=False)    
+    Telefono2 = models.CharField(max_length=50,blank=True,null=False)
     Comentarios = models.TextField()
     ctlusuario = models.CharField(max_length=30,blank=False,null=False)    
     ctlfecha = models.DateTimeField(default=timezone.now)
 
     def __str__(self):
          return self.NombreContacto
-
-class Cat_M_Vendedor(models.Model):
-#Catalogo Vendedores
-    IDVendedor = models.CharField(max_length=30,blank=False, null=False,
-                       primary_key = True ,help_text='Ingrese Clave de Vendedor')
-    NombreVendedor = models.CharField(max_length=100,blank=False,null=False)
-    Direccion = models.TextField()
-    Rfc = models.CharField(max_length=30,blank=False,null=False)
-    Email = models.EmailField()
-    Telefono1 = models.CharField(max_length=50,blank=False,null=False)    
-    Telefono2 = models.CharField(max_length=50,blank=True,null=False)    
-    Telefono3 = models.CharField(max_length=50,blank=True,null=False)
-    Comentarios = models.TextField()
-    ctlusuario = models.CharField(max_length=30,blank=False,null=False)    
-    ctlfecha = models.DateTimeField(default=timezone.now)
-
-    def __str__(self):
-        return self.NombreVendedor
-
 
 class Cat_M_Prospecto(models.Model):
 #Catalogo Prospectos
@@ -246,14 +226,14 @@ class Cat_M_Prospecto(models.Model):
                        help_text='Nombre Casa Materiales' )
     ProductosInteres = models.TextField( help_text='Productos de Interes, Incluyendo Cantidades')
     FechaRegistro = models.DateTimeField(default=timezone.now)
-    NombreVendedor = models.ForeignKey(Cat_M_Vendedor, null= False, blank = False,
+    NombreVendedor = models.ForeignKey(Cat_M_Vendedor, null= False, blank = True,
                   on_delete = models.CASCADE,help_text='Ingrese Vendedor',
                   )
     Puesto = models.CharField(max_length=50,blank=True, null=True)
     Email = models.EmailField()
     Telefono1 = models.CharField(max_length=50,blank=False,null=False)
-    Telefono2 = models.CharField(max_length=50,blank=True,null=False)    
-    Telefono3 = models.CharField(max_length=50,blank=True,null=False)
+    WhatsApp = models.CharField(max_length=50,blank=True,null=False)    
+    Telefono2 = models.CharField(max_length=50,blank=True,null=False)
     Direccion = models.TextField()
     Estatus = models.CharField(max_length=20,blank=False, null=False,
                        default= "VIGENTE",choices = ESTATUS_PROSPECTO_TYPE_Tuples ) 
@@ -321,7 +301,7 @@ class Cat_M_Flete(models.Model):
                        primary_key = True ,help_text='Ingrese Clave Flete')
     NombreFlete = models.CharField(max_length=100,blank=False,null=False)
     #	ID Proveedor
-    NombreProveedor = models.ForeignKey(Cat_M_Proveedores, null= False, blank = True,
+    NombreProveedor = models.ForeignKey(Cat_M_Proveedor, null= False, blank = True,
                   on_delete = models.CASCADE,
                   )
     CapacidadMinimaTarimas=  models.IntegerField(blank=True, null=False, default= 0)

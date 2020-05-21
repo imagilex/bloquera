@@ -6,13 +6,13 @@ class frmTbl_M_MovtosInventario(forms.ModelForm):
     class Meta:
         model = Tbl_M_MovtosInventario
         fields = [
-            'IDPeriodo',
             'IDMovimiento',
-            'IDProducto',
+            'IDPeriodo',
             'IDPlanProducción',
-            'IDVentaIDMovimiento',
+            'IDVenta',
             'IDCompra',
             'IDTipoMovimiento',
+            'NombreProducto',
             'FechaMovto',
             'Cantidad',
             'Observaciones',

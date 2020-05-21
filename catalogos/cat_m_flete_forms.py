@@ -7,7 +7,7 @@ class frmCat_M_Flete(forms.ModelForm):
         model = Cat_M_Flete
         fields = [
             'IDFlete',
-            'Nombre',
+            'NombreFlete',
             'NombreProveedor',
             'CapacidadMinimaTarimas',
             'CapacidadMaximaTarimas',
