@@ -1,8 +1,6 @@
 from django.shortcuts import render
 from django.views import View
 
-from django.db.models import Q
-
 from .cat_m_flete_forms import frmCat_M_Flete as base_form
 from .models import Cat_M_Flete as main_model
 
@@ -18,7 +16,7 @@ def template_base_path(file):
 class List(GenericList):
     html_template = template_base_path("list")
     titulo = "Flete"
-    titulo_descripcion = "Catalogo Fletes"
+    titulo_descripcion = "Catalogo"
     main_data_model = main_model
     model_name = "cat_m_flete"
 
@@ -28,7 +26,7 @@ def get_data(self, search_value=''):
                 self.main_data_model.objects.all())
         else:
             return list(self.main_data_model.objects.filter(
-                Q(IDFlete__icontains=search_value) | Q(Nombre__icontains=search_value)))
+                Q(IDFlete__icontains=search_value) | Q(NombreFlete__icontains=search_value)))
 
 class Read(GenericRead):
     titulo_descripcion = "Flete"

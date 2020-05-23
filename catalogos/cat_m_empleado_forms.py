@@ -7,7 +7,7 @@ class frmCat_M_Empleado(forms.ModelForm):
         model = Cat_M_Empleado
         fields = [
             'IDEmpleado',
-            'NombreEmpleado',
+            'Nombre',
             'Foto',
             'Direccion',
             'NSS',

@@ -1,8 +1,6 @@
 from django.shortcuts import render
 from django.views import View
 
-from django.db.models import Q
-
 from .cat_m_prospecto_forms import frmCat_M_Prospecto as base_form
 from .models import Cat_M_Prospecto as main_model
 
@@ -18,7 +16,7 @@ def template_base_path(file):
 class List(GenericList):
     html_template = template_base_path("list")
     titulo = "Prospecto"
-    titulo_descripcion = "Catalogo Prospectos"
+    titulo_descripcion = "Catalogo"
     main_data_model = main_model
     model_name = "cat_m_prospecto"
 
