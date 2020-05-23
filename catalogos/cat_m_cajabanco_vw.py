@@ -1,6 +1,6 @@
 from django.shortcuts import render
 from django.views import View
-from django.db.models import Q
+
 from .cat_m_cajabanco_forms import frmCat_M_CajaBanco as base_form
 from .models import Cat_M_CajaBanco as main_model
 
@@ -16,7 +16,7 @@ def template_base_path(file):
 class List(GenericList):
     html_template = template_base_path("list")
     titulo = "Caja_banco"
-    titulo_descripcion = "Caja Banco"
+    titulo_descripcion = "Catalogo"
     main_data_model = main_model
     model_name = "cat_m_cajabanco"
 
@@ -26,7 +26,7 @@ class List(GenericList):
                 self.main_data_model.objects.all())
         else:
             return list(self.main_data_model.objects.filter(
-                Q(IDCajaBanco__icontains=search_value) | Q(Nombre__icontains=search_value)))
+                Q(IDCajaBanco__icontains=search_value) | Q(NombreCajaBanco__icontains=search_value)))
 
 class Read(GenericRead):
     titulo_descripcion = "Caja_banco"
