@@ -10,6 +10,9 @@ from zend_django.views import GenericList
 from zend_django.views import GenericRead
 from zend_django.views import GenericUpdate
 
+from zend_django.parametros_models import ParametroUsuario
+from django.db.models import Q
+
 def template_base_path(file):
     return 'catalogos/cat_d_clientesucursal/' + file + ".html"
 
@@ -20,10 +23,12 @@ class List(GenericList):
     main_data_model = main_model
     model_name = "cat_d_clientesucursal"
 
-    def get_data(self, search_value=''):
+    def get_data(self, pkcliente, search_value=''):
+        data = self.main_data_model.objects.filter(IDCliente__pk=pkcliente)
+        
         if '' == search_value:
             return list(
-                self.main_data_model.objects.all())
+                data.all())
         else:
             return list(self.main_data_model.objects.filter(
                 Q(IDCliente__icontains=search_value) | Q(NombreContacto__icontains=search_value)))
