@@ -10,6 +10,9 @@ from zend_django.views import GenericList
 from zend_django.views import GenericRead
 from zend_django.views import GenericUpdate
 
+from zend_django.parametros_models import ParametroUsuario
+from django.db.models import Q
+
 def template_base_path(file):
     return 'catalogos/cat_d_proveedorcontacto/' + file + ".html"
 
