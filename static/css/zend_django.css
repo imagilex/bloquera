@@ -2,11 +2,9 @@
 CSS file for zend_django app
 */
 
-
 /* Main Menu */
-
 nav#main-menu {
-    margin-bottom: 20px;
+    margin-bottom: 15px;
 }
 
 .dropdown-submenu {
@@ -57,7 +55,6 @@ nav#main-menu {
     border-radius: 6px 0 6px 6px;
 }
 
-
 /* Parametros de Sistema */
 
 #main-form-parametrosistema img {
@@ -65,7 +62,6 @@ nav#main-menu {
     max-height: 500px;
     border: 1px solid silver;
 }
-
 
 /* form Login */
 
@@ -77,7 +73,6 @@ form.form-signin {
     border: 1px solid #ced4da;
     border-radius: .25rem;
 }
-
 div.body-container {
     position: absolute;
     top: 0;
@@ -87,6 +82,6 @@ div.body-container {
     display: flex;
     -ms-flex-align: center;
     align-items: center;
-    background-color: #ffffff;
+    background-color: #f5f5f5;
     z-index: -10;
 }
