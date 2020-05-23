@@ -23,28 +23,30 @@ class List(GenericList):
     main_data_model = main_model
     model_name = "cat_d_prospecto"
 
-    def get_data(self, search_value=''):
+    def get_data(self, pkprospecto, search_value=''):
+        data = self.main_data_model.objects.filter(IDCliente__pk=pkprospecto)
+        
         if '' == search_value:
             return list(
-                self.main_data_model.objects.all())
+                data.all())
         else:
             return list(self.main_data_model.objects.filter(
-                Q(IDProspecto__icontains=search_value) | Q(Nombre__icontains=search_value)))
+                Q(IDProspecto__icontains=search_value) | Q(NombreProspecto__icontains=search_value)))
     
-    def get(self, request, pkcliente):
+    def get(self, request, pkprospecto):
             search_value = ParametroUsuario.get_valor(
                 request.user, 'basic_search', self.model_name)
             return self.base_render(
-                request, self.get_data(pkcliente, search_value), search_value)
+                request, self.get_data(pkprospecto, search_value), search_value)
 
-    def post(self, request, pkcliente):
+    def post(self, request, pkprospecto):
         if "search" == request.POST.get('action', ''):
             search_value = request.POST.get('valor', '')
         else:
             search_value = ParametroUsuario.get_valor(
                 request.user, 'basic_search', self.model_name)
         return self.base_render(
-            request, self.get_data(pkcliente, search_value), search_value)
+            request, self.get_data(pkprospecto, search_value), search_value)
 
 
 class Read(GenericRead):
