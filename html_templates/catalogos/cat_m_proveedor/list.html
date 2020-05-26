@@ -2,14 +2,14 @@
 {% load i18n %}
 {% load op_helpers %}
 {% block content %}
-<a href="{% url "cat_d_proveedorcontacto_list" %}">Contactos Proveedores</a>
+<a href="{% url "cat_d_proveedorcontacto_list" pkproveedor="P001" %}">Contacto Proveedor</a>
 
 
 <table class="table table-striped table-sm table-responsive-md">
     <thead>
         <tr>
-         <th>IDProveedores</th>
-            <th>NombreProveedor</th>
+         <th>ID Proveedores</th>
+            <th>Nombre del Proveedor</th>
             <th>Empresa</th>
             <th>Email</th>
             <th>Telefono</th>
@@ -24,8 +24,8 @@
     </thead>
     <tfoot>
         <tr>
-         <th>IDProveedores</th>
-            <th>NombreProveedor</th>
+         <th>ID Proveedores</th>
+            <th>Nombre del Proveedor</th>
             <th>Empresa</th>
             <th>Email</th>
             <th>Telefono</th>
@@ -45,6 +45,7 @@
                 <td>{{ reg.NombreProveedor}}</td>
                 <td>{{ reg.Empresa}}</td>
                 <td>{{ reg.Email}}</td>
+                <td>{{ reg.Telefono1}}</td>
                 <td class="text-center">
                     {% if perms.catalogos.view_cat_m_proveedor %}
                     <a data-action="read" href="{% url 'cat_m_proveedor_read' pk=reg.pk %}" class="btn btn-outline-secondary" role="button" title="{% crud_label 'read' %}">

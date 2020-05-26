@@ -2,16 +2,15 @@
 {% load i18n %}
 {% load op_helpers %}
 {% block content %}
-<a href="{% url "cat_d_clientesucursal_list" pkcliente="C001" %}">Cliente sucursales</a>
+<a href="{% url "cat_d_clientesucursal_list" pkcliente="C001" %}">Sucursales Cliente </a>
 
 
 <table class="table table-striped table-sm table-responsive-md">
     <thead>
         <tr>
-
          <th>ID Cliente</th>
-            <th>NombreCliente</th>
-            <th>Nombre Vendedor</th>
+            <th>Nombre del Cliente</th>
+            <th>Nombre del Vendedor</th>
             <th>Empresa</th>
             <th>Email</th>
             <th colspan="3" class="text-center">
@@ -25,9 +24,9 @@
     </thead>
     <tfoot>
         <tr>
-         <th>ID Cliente</th>
-            <th>NombreCliente</th>
-            <th>Nombre Vendedor</th>
+        <th>ID Cliente</th>
+            <th>Nombre del Cliente</th>
+            <th>Nombre del Vendedor</th>
             <th>Empresa</th>
             <th>Email</th>
             <th colspan="3" class="text-center">
@@ -47,8 +46,6 @@
                 <td> {{ reg.NombreVendedor}}  </td>
                 <td>{{ reg.Empresa}}</td>
                 <td>{{ reg.Email}}</td>
-                <td>{{ reg.IDCliente}}</td>
-                
                 <td class="text-center">
                     {% if perms.catalogos.view_cat_m_cliente %}
                     <a data-action="read" href="{% url 'cat_m_cliente_read' pk=reg.pk %}" class="btn btn-outline-secondary" role="button" title="{% crud_label 'read' %}">

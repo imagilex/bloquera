@@ -13,6 +13,6 @@ class frmCat_M_Proveedor(forms.ModelForm):
             'DirFiscal',
             'Telefono1',
             'WhatsApp',
-            'Telefono3',
+            'Telefono2',
             'Email',
         ]
