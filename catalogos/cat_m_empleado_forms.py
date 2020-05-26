@@ -17,4 +17,7 @@ class frmCat_M_Empleado(forms.ModelForm):
             'PeriodoPago',
             'Sueldo',
             'HorasExtra',
+            'Area',
+            'MontoHoraExtra',
+            'Puesto',
         ]

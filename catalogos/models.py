@@ -8,7 +8,7 @@ from django.utils import timezone
              #db_index = true en campos que son indices
 #PrimaryKey('.IDProUser', on_delete=models.CASCADE)
 
-STATUS_TYPE = {
+ESTATUS_TYPE = {
     'VIGENTE': 'VIGENTE',
     'DESCONTINUADO': 'DESCONTINUADO',
     'CANCELADO': 'CANCELADO',
@@ -16,11 +16,11 @@ STATUS_TYPE = {
     
 }
 
-STATUS_TYPE_Tuples = (
-        (STATUS_TYPE['VIGENTE'], 'VIGENTE'),
-        (STATUS_TYPE['DESCONTINUADO'], 'DESCONTINUADO'),
-        (STATUS_TYPE['CANCELADO'], 'CANCELADO'),
-        (STATUS_TYPE['SUSPENDIDO'], 'SUSPENDIDO'),
+ESTATUS_TYPE_Tuples = (
+        (ESTATUS_TYPE['VIGENTE'], 'VIGENTE'),
+        (ESTATUS_TYPE['DESCONTINUADO'], 'DESCONTINUADO'),
+        (ESTATUS_TYPE['CANCELADO'], 'CANCELADO'),
+        (ESTATUS_TYPE['SUSPENDIDO'], 'SUSPENDIDO'),
         
     )
 
@@ -104,7 +104,7 @@ class Cat_M_Inventario(models.Model):
     Preciovtaunitarioultimaproduccion = models.DecimalField(blank=True, null=False, default= 0,
                        max_digits=8,decimal_places=2) 
     Estatus = models.CharField(blank=False, null=False, max_length=20,
-                       default = "VIGENTE", choices = STATUS_TYPE_Tuples )
+                       default = "VIGENTE", choices = ESTATUS_TYPE_Tuples )
                        #VIGENTE,DESCONTINUADO,CANCELADO Y SUSPENDIDO
     ctlusuario = models.CharField(max_length=30,blank=False,null=False)    
     ctlFecha  = models.DateTimeField(default=timezone.now)
@@ -141,7 +141,7 @@ class Cat_M_Proveedor(models.Model):
     DirFiscal = models.CharField(max_length=150,blank=False,null=False)    
     Telefono1 = models.CharField(max_length=50,blank=False,null=False)    
     WhatsApp = models.CharField(max_length=50,blank=True,null=False)    
-    Telefono3 = models.CharField(max_length=50,blank=True,null=False)
+    Telefono2 = models.CharField(max_length=50,blank=True,null=False)
     Email = models.EmailField()
     ctlusuario = models.CharField(max_length=30,blank=False,null=False)    
     ctlfecha = models.DateTimeField(default=timezone.now)
@@ -264,7 +264,7 @@ class Cat_D_Prospecto(models.Model):
     ctlfecha = models.DateTimeField(default=timezone.now)
 
     def __str__(self):
-        return self.NombreProspecto
+        return self.Prospecto
 
 class Cat_M_Empleado(models.Model):
 #Catalogo Empleados

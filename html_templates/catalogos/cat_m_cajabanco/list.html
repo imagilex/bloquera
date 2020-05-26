@@ -7,11 +7,13 @@
 <table class="table table-striped table-sm table-responsive-md">
     <thead>
         <tr>
-         <th>IDCliente</th>
-            <th>NombreCliente</th>
-            <th>NombreProveedor</th>
-            <th>Email</th>
-            <th>Telefono1</th>
+         <th>IDCajaBanco</th>
+            <th>Nombre Caja de Banco</th>
+            <th>Sucursal</th>
+            <th>Num_CLABE</th>
+            <th>Num_Cuenta</th>
+            <th>Ejecutivo</th>
+            <th>Telefono</th>
             <th colspan="3" class="text-center">
                 {% if perms.catalogos.add_cat_m_cajabanco %}
                 <a data-action="create" href="{% url 'cat_m_cajabanco_create' %}" class="btn btn-outline-secondary" role="button" title="{% crud_label 'create' %}">
@@ -23,11 +25,13 @@
     </thead>
     <tfoot>
         <tr>
-         <th>IDCliente</th>
-            <th>NombreCliente</th>
-            <th>NombreProveedor</th>
-            <th>Email</th>
-            <th>Telefono1</th>
+         <th>IDCajaBanco</th>
+            <th>Nombre Caja de Banco</th>
+            <th>Sucursal</th>
+            <th>Num_CLABE</th>
+            <th>Num_Cuenta</th>
+            <th>Ejecutivo</th>
+            <th>Telefono</th>
             <th colspan="3" class="text-center">
                 {% if perms.catalogos.add_cat_m_cajabanco %}
                 <a data-action="create" href="{% url 'cat_m_cajabanco_create' %}" class="btn btn-outline-secondary" role="button" title="{% crud_label 'create' %}">
@@ -40,10 +44,12 @@
     <tbody id="data-tbl">
         {% for reg in data %}
             <tr data-object-id="{{ reg.pk }}">
-                <td>{{ reg.IDCliente}}</td>
-                <td>{{ reg.NombreCliente}}</td>
-                <td>{{ reg.NombreProveedor}}</td>
-                <td>{{ reg.Email}}</td>
+                <td>{{ reg.IDCajaBanco}}</td>
+                <td>{{ reg.NombreCajaBanco}}</td>
+                <td>{{ reg.Sucursal}}</td>
+                <td>{{ reg.Num_CLABE}}</td>
+                <td>{{ reg.Num_Cuenta}}</td>
+                <td>{{ reg.Ejecutivo}}</td>
                 <td>{{ reg.Telefono1}}</td>
                 <td class="text-center">
                     {% if perms.catalogos.view_cat_m_cajabanco %}

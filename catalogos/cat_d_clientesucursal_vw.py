@@ -1,6 +1,6 @@
 from django.shortcuts import render
 from django.views import View
-from django.db.models import Q
+
 from .cat_d_clientesucursal_forms import frmCat_D_ClienteSucursal as base_form
 from .models import Cat_D_ClienteSucursal as main_model
 
@@ -11,25 +11,27 @@ from zend_django.views import GenericRead
 from zend_django.views import GenericUpdate
 
 from zend_django.parametros_models import ParametroUsuario
+from django.db.models import Q
 
 def template_base_path(file):
     return 'catalogos/cat_d_clientesucursal/' + file + ".html"
 
 class List(GenericList):
     html_template = template_base_path("list")
-    titulo = "Clientes_sucursales"
-    titulo_descripcion = "Sucursales Clientes"
+    titulo = "Sucursales del Cliente"
+    titulo_descripcion = "Catalogo"
     main_data_model = main_model
     model_name = "cat_d_clientesucursal"
 
+#CAMBIOS RUBEN 19 MAY0
     def get_data(self, pkcliente, search_value=''):
         data = self.main_data_model.objects.filter(IDCliente__pk=pkcliente)
-
+        
         if '' == search_value:
             return list(
                 data.all())
         else:
-            return list(data.filter(
+            return list(self.main_data_model.objects.filter(
                 Q(IDCliente__icontains=search_value) | Q(NombreContacto__icontains=search_value)))
     
     def get(self, request, pkcliente):
@@ -47,22 +49,21 @@ class List(GenericList):
         return self.base_render(
             request, self.get_data(pkcliente, search_value), search_value)
 
-
 class Read(GenericRead):
-    titulo_descripcion = "Clientes_sucursales"
+    titulo_descripcion = "Sucursales del Cliente"
     model_name = "cat_d_clientesucursal"
     base_data_form = base_form
     main_data_model = main_model
 
 
 class Create(GenericCreate):
-    titulo = "Clientes_sucursales"
+    titulo = "Sucursales del Cliente"
     model_name = 'cat_d_clientesucursal'
     base_data_form = base_form
 
 
 class Update(GenericUpdate):
-    titulo = "Clientes_sucursales"
+    titulo = "Sucursales del Cliente"
     model_name = "cat_d_clientesucursal"
     base_data_form = base_form
     main_data_model = main_model

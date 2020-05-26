@@ -7,7 +7,7 @@ obj = 'cat_d_prospecto'
 app_label = 'catalogos'
 
 urlpatterns = [
-    path('', permission_required(
+    path('listar/<pkprospecto>', permission_required(
         f'{app_label}.view_{obj}')(views.List.as_view()),
         name=f"{obj}_list"),
     path('nuevo/', permission_required(

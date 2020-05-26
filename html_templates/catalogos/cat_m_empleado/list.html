@@ -4,16 +4,17 @@
 {% block content %}
 
 
-
 <table class="table table-striped table-sm table-responsive-md">
     <thead>
         <tr>
-
          <th>ID Empleado</th>
             <th>Nombre</th>
             <th>Foto</th>
             <th>Direccion</th>
+            <th>NSS</th>
             <th>Telefono</th>
+            <th>Area</th>
+            <th>Puesto</th>
             <th colspan="3" class="text-center">
                 {% if perms.catalogos.add_cat_m_empleado %}
                 <a data-action="create" href="{% url 'cat_m_empleado_create' %}" class="btn btn-outline-secondary" role="button" title="{% crud_label 'create' %}">
@@ -29,7 +30,10 @@
             <th>Nombre</th>
             <th>Foto</th>
             <th>Direccion</th>
+            <th>NSS</th>
             <th>Telefono</th>
+            <th>Area</th>
+            <th>Puesto</th>
             <th colspan="3" class="text-center">
                 {% if perms.catalogos.add_cat_m_empleado %}
                 <a data-action="create" href="{% url 'cat_m_empleado_create' %}" class="btn btn-outline-secondary" role="button" title="{% crud_label 'create' %}">
@@ -43,12 +47,16 @@
         {% for reg in data %}
             <tr data-object-id="{{ reg.pk }}">
                 <td>{{ reg.IDEmpleado }}</td>
-                <td>{{ reg.Nombre }}</td>
+                <td>{{ reg.NombreEmpleado }}</td>
                 <td>
                 <img width="100"
                 height="100" src="{{MEDIA_URL}}{{ reg.Foto }}">
                 </td>
+                <td>{{ reg.Direccion }}</td>
+                <td>{{ reg.NSS }}</td>
                 <td>{{ reg.Telefono1 }}</td>
+                <td>{{ reg.Area }}</td>
+                <td>{{ reg.Puesto }}</td>
                 <td class="text-center">
                     {% if perms.catalogos.view_cat_m_empleado %}
                     <a data-action="read" href="{% url 'cat_m_empleado_read' pk=reg.pk %}" class="btn btn-outline-secondary" role="button" title="{% crud_label 'read' %}">

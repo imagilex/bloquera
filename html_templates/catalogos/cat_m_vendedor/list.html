@@ -3,16 +3,17 @@
 {% load op_helpers %}
 {% block content %}
 
-
 <table class="table table-striped table-sm table-responsive-md">
     <thead>
         <tr>
 
-         <th>IDVendedor</th>
-            <th>NombreVendedor</th>
+          <th>ID Vendedor</th>
+            <th>Nombre</th>
             <th>Direccion</th>
             <th>RFC</th>
-            <th>Telefono1</th>
+            <th>Email</th>
+            <th>WhatsApp</th>
+            <th>Telefono</th>
             <th colspan="3" class="text-center">
                 {% if perms.catalogos.add_cat_m_vendedor %}
                 <a data-action="create" href="{% url 'cat_m_vendedor_create' %}" class="btn btn-outline-secondary" role="button" title="{% crud_label 'create' %}">
@@ -24,11 +25,13 @@
     </thead>
     <tfoot>
         <tr>
-            <th>IDVendedor</th>
-            <th>NombreVendedor</th>
+          <th>ID Vendedor</th>
+            <th>Nombre</th>
             <th>Direccion</th>
             <th>RFC</th>
-            <th>Telefono1</th>
+            <th>Email</th>
+            <th>WhatsApp</th>
+            <th>Telefono</th>
             <th colspan="3" class="text-center">
                 {% if perms.catalogos.add_cat_m_vendedor %}
                 <a data-action="create" href="{% url 'cat_m_vendedor_create' %}" class="btn btn-outline-secondary" role="button" title="{% crud_label 'create' %}">
@@ -41,14 +44,16 @@
     <tbody id="data-tbl">
         {% for reg in data %}
             <tr data-object-id="{{ reg.pk }}">
-                <td>{{ reg.IDVendedor}}</td>
+                <td>{{ reg.IDVendedor }}</td>
                 <td>{{ reg.NombreVendedor }}</td>
-                <td>{{ reg.Direccion }}</td>
-                <td>{{ reg.RFC }}</td>
+                <td> {{ reg.Direccion }}</td>
+                <td>{{ reg.Rfc}}</td>
+                <td>{{ reg.Email}}</td>
+                <td>{{ reg.WhatsApp}}</td>
                 <td>{{ reg.Telefono1}}</td>
                 <td class="text-center">
-                    {% if perms.catalogos.view_cat_m_prospecto %}
-                    <a data-action="read" href="{% url 'cat_m_prospecto_read' pk=reg.pk %}" class="btn btn-outline-secondary" role="button" title="{% crud_label 'read' %}">
+                    {% if perms.catalogos.view_cat_m_vendedor %}
+                    <a data-action="read" href="{% url 'cat_m_vendedor_read' pk=reg.pk %}" class="btn btn-outline-secondary" role="button" title="{% crud_label 'read' %}">
                         {% crud_icon 'read' %}
                     </a>
                     {% endif %}

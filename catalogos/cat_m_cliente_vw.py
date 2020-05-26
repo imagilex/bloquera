@@ -1,6 +1,6 @@
 from django.shortcuts import render
 from django.views import View
-from django.db.models import Q
+
 from .cat_m_cliente_forms import frmCat_M_Cliente as base_form
 from .models import Cat_M_Cliente as main_model
 
@@ -10,13 +10,15 @@ from zend_django.views import GenericList
 from zend_django.views import GenericRead
 from zend_django.views import GenericUpdate
 
+from django.db.models import Q
+
 def template_base_path(file):
     return 'catalogos/cat_m_cliente/' + file + ".html"
 
 class List(GenericList):
     html_template = template_base_path("list")
     titulo = "Clientes"
-    titulo_descripcion = "Catalogo Clientes"
+    titulo_descripcion = "Catalogo"
     main_data_model = main_model
     model_name = "cat_m_cliente"
 
