@@ -9,8 +9,9 @@ urlpatterns = [
     path('clientes_sucursales/', include('catalogos.cat_d_clientesucursal_urls')),
     path('vendedor/', include('catalogos.cat_m_vendedor_urls')),
     path('prospectos/', include('catalogos.cat_m_prospecto_urls')),
-    path('prospectos_seguimiento/', include('catalogos.cat_d_prospecto_urls')),
+    path('prospecto_detalle/', include('catalogos.cat_d_prospecto_urls')),
     path('flete/', include('catalogos.cat_m_flete_urls')),
     path('caja_banco/', include('catalogos.cat_m_cajabanco_urls')),
+    path('empleados/', include('catalogos.cat_m_empleado_urls')),
 
 ]

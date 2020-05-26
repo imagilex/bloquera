@@ -1,0 +1,94 @@
+{% extends "zend_django/html/html_struct.html" %}
+{% load i18n %}
+{% load op_helpers %}
+{% block content %}
+<a href="{% url "cat_d_prospecto_list" pkprospecto="PR001" %}">Detalle del Prospecto</a>
+
+
+<table class="table table-striped table-sm table-responsive-md">
+    <thead>
+        <tr>
+         <th>ID Prospecto</th>
+            <th>Nombre del Prospecto</th>
+            <th>Nombre del Vendedor</th>
+            <th>TipoCaptacion</th>
+            <th>UsoMaterial</th>
+            <th>Constructora</th>
+            <th>Puesto</th>
+            <th>WhatsApp</th>
+            <th>Email</th>
+            <th>Telefono1</th>
+            <th>Estatus</th>
+            <th colspan="3" class="text-center">
+                {% if perms.catalogos.add_cat_m_prospecto %}
+                <a data-action="create" href="{% url 'cat_m_prospecto_create' %}" class="btn btn-outline-secondary" role="button" title="{% crud_label 'create' %}">
+                    {% crud_icon 'create' %} {% crud_label 'create' %}
+                </a>
+                {% endif %}
+            </th>
+        </tr>
+    </thead>
+    <tfoot>
+        <tr>
+        <th>ID Prospecto</th>
+            <th>Nombre del Prospecto</th>
+            <th>Nombre del Vendedor</th>
+            <th>TipoCaptacion</th>
+            <th>UsoMaterial</th>
+            <th>Constructora</th>
+            <th>Puesto</th>
+            <th>WhatsApp</th>
+            <th>Email</th>
+            <th>Telefono</th>
+            <th>Estatus</th>
+            <th colspan="3" class="text-center">
+                {% if perms.catalogos.add_cat_m_prospecto %}
+                <a data-action="create" href="{% url 'cat_m_prospecto_create' %}" class="btn btn-outline-secondary" role="button" title="{% crud_label 'create' %}">
+                    {% crud_icon 'create' %} {% crud_label 'create' %}
+                </a>
+                {% endif %}
+            </th>
+        </tr>
+    </tfoot>
+    <tbody id="data-tbl">
+        {% for reg in data %}
+            <tr data-object-id="{{ reg.pk }}">
+                <td>{{ reg.IDProspecto }}</td>
+                <td>{{ reg.NombreProspecto }}</td>
+                <td> {{ reg.NombreVendedor}}  </td>
+                <td>{{ reg.TipoCaptacion}}</td>
+                <td>{{ reg.UsoMaterial}}</td>
+                <td>{{ reg.Constructora}}</td>
+                <td>{{ reg.Puesto}}</td>
+                <td>{{ reg.WhatsApp}}</td>
+                <td>{{ reg.Email}}</td>
+                <td>{{ reg.Telefono1}}</td>
+                <td>{{ reg.Estatus}}</td>
+                <td class="text-center">
+                    {% if perms.catalogos.view_cat_m_prospecto %}
+                    <a data-action="read" href="{% url 'cat_m_prospecto_read' pk=reg.pk %}" class="btn btn-outline-secondary" role="button" title="{% crud_label 'read' %}">
+                        {% crud_icon 'read' %}
+                    </a>
+                    {% endif %}
+                </td>
+                <td class="text-center">
+                    {% if perms.catalogos.change_cat_m_prospecto %}
+                    <a data-action="update" href="{% url 'cat_m_prospecto_update' pk=reg.pk %}" class="btn btn-outline-secondary" role="button" title="{% crud_label 'update' %}">
+                        {% crud_icon 'update' %}
+                    </a>
+                    {% endif %}
+                </td>
+                <td class="text-center">
+                    {% if perms.catalogos.delete_cat_m_prospecto %}
+                    <button data-action="delete" onclick="App.showDeletingConfirmation(`{% url 'cat_m_prospecto_delete' pk=reg.pk %}`, `Registro`)" type="button" class="btn btn-outline-secondary" title="{% crud_label 'delete' %}">
+                        {% crud_icon 'delete' %}
+                    </button>
+                    {% endif %}
+                </td>
+            
+            </tr>
+        {% endfor %}
+    </tbody>
+</table>
+
+{% endblock %}

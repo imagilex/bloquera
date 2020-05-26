@@ -18,11 +18,12 @@ def template_base_path(file):
 
 class List(GenericList):
     html_template = template_base_path("list")
-    titulo = "Clientes_sucursales"
+    titulo = "Sucursales del Cliente"
     titulo_descripcion = "Catalogo"
     main_data_model = main_model
     model_name = "cat_d_clientesucursal"
 
+#CAMBIOS RUBEN 19 MAY0
     def get_data(self, pkcliente, search_value=''):
         data = self.main_data_model.objects.filter(IDCliente__pk=pkcliente)
         
@@ -32,8 +33,6 @@ class List(GenericList):
         else:
             return list(self.main_data_model.objects.filter(
                 Q(IDCliente__icontains=search_value) | Q(NombreContacto__icontains=search_value)))
-    
-    #CAMBIOS RUBEN 19 MAY0
     
     def get(self, request, pkcliente):
         search_value = ParametroUsuario.get_valor(
@@ -51,20 +50,20 @@ class List(GenericList):
             request, self.get_data(pkcliente, search_value), search_value)
 
 class Read(GenericRead):
-    titulo_descripcion = "Clientes_sucursales"
+    titulo_descripcion = "Sucursales del Cliente"
     model_name = "cat_d_clientesucursal"
     base_data_form = base_form
     main_data_model = main_model
 
 
 class Create(GenericCreate):
-    titulo = "Clientes_sucursales"
+    titulo = "Sucursales del Cliente"
     model_name = 'cat_d_clientesucursal'
     base_data_form = base_form
 
 
 class Update(GenericUpdate):
-    titulo = "Clientes_sucursales"
+    titulo = "Sucursales del Cliente"
     model_name = "cat_d_clientesucursal"
     base_data_form = base_form
     main_data_model = main_model
