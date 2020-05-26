@@ -18,20 +18,20 @@ def template_base_path(file):
 
 class List(GenericList):
     html_template = template_base_path("list")
-    titulo = "Detalle_Prospecto"
+    titulo = "Detalle del Prospecto"
     titulo_descripcion = "Catalogo"
     main_data_model = main_model
     model_name = "cat_d_prospecto"
 
     def get_data(self, pkprospecto, search_value=''):
-        data = self.main_data_model.objects.filter(IDProspecto__pk=pkprospecto)
+        data = self.main_data_model.objects.filter(Prospecto__pk=pkprospecto)
        
         if '' == search_value:
             return list(
                 data.all())
         else:
             return list(self.main_data_model.objects.filter(
-                Q(IDProspecto__icontains=search_value) | Q(NombreProspecto__icontains=search_value)))
+                Q(Prospecto__icontains=search_value) | Q(FechaNota__icontains=search_value)))
     
     def get(self, request, pkprospecto):
             search_value = ParametroUsuario.get_valor(
@@ -49,20 +49,20 @@ class List(GenericList):
             request, self.get_data(pkprospecto, search_value), search_value)
 
 class Read(GenericRead):
-    titulo_descripcion = "Detalle_Prospecto"
+    titulo_descripcion = "Detalle del Prospecto"
     model_name = "cat_d_prospecto"
     base_data_form = base_form
     main_data_model = main_model
 
 
 class Create(GenericCreate):
-    titulo = "Detalle_Prospecto"
+    titulo = "Detalle del Prospecto"
     model_name = 'cat_d_prospecto'
     base_data_form = base_form
 
 
 class Update(GenericUpdate):
-    titulo = "Detalle_Prospecto"
+    titulo = "Detalle del Prospecto"
     model_name = "cat_d_prospecto"
     base_data_form = base_form
     main_data_model = main_model

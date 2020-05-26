@@ -141,7 +141,7 @@ class Cat_M_Proveedor(models.Model):
     DirFiscal = models.CharField(max_length=150,blank=False,null=False)    
     Telefono1 = models.CharField(max_length=50,blank=False,null=False)    
     WhatsApp = models.CharField(max_length=50,blank=True,null=False)    
-    Telefono3 = models.CharField(max_length=50,blank=True,null=False)
+    Telefono2 = models.CharField(max_length=50,blank=True,null=False)
     Email = models.EmailField()
     ctlusuario = models.CharField(max_length=30,blank=False,null=False)    
     ctlfecha = models.DateTimeField(default=timezone.now)
@@ -264,7 +264,7 @@ class Cat_D_Prospecto(models.Model):
     ctlfecha = models.DateTimeField(default=timezone.now)
 
     def __str__(self):
-        return self.NombreProspecto
+        return self.Prospecto
 
 class Cat_M_Empleado(models.Model):
 #Catalogo Empleados
