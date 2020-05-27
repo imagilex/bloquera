@@ -31,7 +31,7 @@ class List(GenericList):
             return list(
                 data.all())
         else:
-            return list(self.main_data_model.objects.filter(
+            return list(self.data.filter(
                 Q(IDCliente__icontains=search_value) | Q(NombreContacto__icontains=search_value)))
     
     def get(self, request, pkcliente):
