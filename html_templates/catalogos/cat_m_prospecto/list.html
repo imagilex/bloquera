@@ -47,9 +47,7 @@
                 <td>{{ reg.TipoCaptacion}}</td>
                 <td>{{ reg.UsoMaterial}}</td>
                 <td>{{ reg.Constructora}}</td>
-
                 <td> <a href="{% url "cat_d_prospecto_list" pkprospecto=reg.IDProspecto %}">Seguimiento</a></td>
-
                 <td class="text-center">
                     {% if perms.catalogos.view_cat_m_prospecto %}
                     <a data-action="read" href="{% url 'cat_m_prospecto_read' pk=reg.pk %}" class="btn btn-outline-secondary" role="button" title="{% crud_label 'read' %}">
