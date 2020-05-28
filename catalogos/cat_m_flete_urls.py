@@ -23,4 +23,5 @@ urlpatterns = [
         f'{app_label}.view_{obj}')(views.Read.as_view()),
         name=f"{obj}_read"),
 
+
 ]
