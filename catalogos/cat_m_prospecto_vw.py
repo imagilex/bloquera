@@ -17,7 +17,7 @@ def template_base_path(file):
 
 class List(GenericList):
     html_template = template_base_path("list")
-    titulo = "Prospecto"
+    titulo = "Prospectos"
     titulo_descripcion = "Catalogo"
     main_data_model = main_model
     model_name = "cat_m_prospecto"
@@ -31,20 +31,20 @@ class List(GenericList):
                 Q(IDProspecto__icontains=search_value) | Q(NombreProspecto__icontains=search_value)))
 
 class Read(GenericRead):
-    titulo_descripcion = "Prospecto"
+    titulo_descripcion = "Prospectos"
     model_name = "cat_m_prospecto"
     base_data_form = base_form
     main_data_model = main_model
 
 
 class Create(GenericCreate):
-    titulo = "Prospecto"
+    titulo = "Prospectos"
     model_name = 'cat_m_prospecto'
     base_data_form = base_form
 
 
 class Update(GenericUpdate):
-    titulo = "Prospecto"
+    titulo = "Prospectos"
     model_name = "cat_m_prospecto"
     base_data_form = base_form
     main_data_model = main_model

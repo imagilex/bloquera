@@ -2,7 +2,15 @@
 CSS file for zend_django app
 */
 
+.imagentam {
+    max-width: 200px;
+    max-height: 200px;
+    align-items: center;
+}
+
+
 /* Main Menu */
+
 nav#main-menu {
     margin-bottom: 15px;
 }
@@ -55,6 +63,7 @@ nav#main-menu {
     border-radius: 6px 0 6px 6px;
 }
 
+
 /* Parametros de Sistema */
 
 #main-form-parametrosistema img {
@@ -62,6 +71,7 @@ nav#main-menu {
     max-height: 500px;
     border: 1px solid silver;
 }
+
 
 /* form Login */
 
@@ -73,6 +83,7 @@ form.form-signin {
     border: 1px solid #ced4da;
     border-radius: .25rem;
 }
+
 div.body-container {
     position: absolute;
     top: 0;
