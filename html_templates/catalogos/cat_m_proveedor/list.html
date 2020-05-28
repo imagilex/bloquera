@@ -43,7 +43,7 @@
                 <td>{{ reg.NombreProveedor}}</td>
                 <td>{{ reg.Empresa}}</td>
                 <td>{{ reg.Email}}</td>
-                <td>{{ reg.Telefono1}}</td>
+                <td>{{reg.Telefono1}}</td>
                 <td> <a href="{% url "cat_d_proveedorcontacto_list" pkproveedor=reg.IDProveedor %}">Contacto del Proveedor</a></td>
                 <td class="text-center">
                     {% if perms.catalogos.view_cat_m_proveedor %}
