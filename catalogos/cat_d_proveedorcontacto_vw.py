@@ -18,7 +18,7 @@ def template_base_path(file):
 
 class List(GenericList):
     html_template = template_base_path("list")
-    titulo = "Contacto Proveedor"
+    titulo = "Contactos del Proveedor"
     titulo_descripcion = "Catalogo"
     main_data_model = main_model
     model_name = "cat_d_proveedorcontacto"
@@ -49,20 +49,20 @@ class List(GenericList):
             request, self.get_data(pkproveedor, search_value), search_value)
 
 class Read(GenericRead):
-    titulo_descripcion = "Contacto Proveedor"
+    titulo_descripcion = "Contactos del Proveedor"
     model_name = "cat_d_proveedorcontacto"
     base_data_form = base_form
     main_data_model = main_model
 
 
 class Create(GenericCreate):
-    titulo = "Contacto Proveedor"
+    titulo = "Contactos del Proveedor"
     model_name = 'cat_d_proveedorcontacto'
     base_data_form = base_form
 
 
 class Update(GenericUpdate):
-    titulo = "Contacto Proveedor"
+    titulo = "Contactos del Proveedor"
     model_name = "cat_d_proveedorcontacto"
     base_data_form = base_form
     main_data_model = main_model
