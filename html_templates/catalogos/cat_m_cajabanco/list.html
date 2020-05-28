@@ -12,8 +12,7 @@
             <th>Sucursal</th>
             <th>Num_CLABE</th>
             <th>Num_Cuenta</th>
-            <th>Ejecutivo</th>
-            <th>Telefono</th>
+           
             <th colspan="3" class="text-center">
                 {% if perms.catalogos.add_cat_m_cajabanco %}
                 <a data-action="create" href="{% url 'cat_m_cajabanco_create' %}" class="btn btn-outline-secondary" role="button" title="{% crud_label 'create' %}">
@@ -30,8 +29,7 @@
             <th>Sucursal</th>
             <th>Num_CLABE</th>
             <th>Num_Cuenta</th>
-            <th>Ejecutivo</th>
-            <th>Telefono</th>
+            
             <th colspan="3" class="text-center">
                 {% if perms.catalogos.add_cat_m_cajabanco %}
                 <a data-action="create" href="{% url 'cat_m_cajabanco_create' %}" class="btn btn-outline-secondary" role="button" title="{% crud_label 'create' %}">
@@ -49,8 +47,7 @@
                 <td>{{ reg.Sucursal}}</td>
                 <td>{{ reg.Num_CLABE}}</td>
                 <td>{{ reg.Num_Cuenta}}</td>
-                <td>{{ reg.Ejecutivo}}</td>
-                <td>{{ reg.Telefono1}}</td>
+              
                 <td class="text-center">
                     {% if perms.catalogos.view_cat_m_cajabanco %}
                     <a data-action="read" href="{% url 'cat_m_cajabanco_read' pk=reg.pk %}" class="btn btn-outline-secondary" role="button" title="{% crud_label 'read' %}">
