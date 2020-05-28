@@ -12,8 +12,7 @@
             <th>Nombre del Proveedor</th>
             <th>Cap. Min. de Tarimas</th>
             <th>Cap. Max de Tarimas</th>
-            <th>Precio</th>
-            <th>Comentarios</th>
+           
             <th colspan="3" class="text-center">
                 {% if perms.catalogos.add_cat_m_flete %}
                 <a data-action="create" href="{% url 'cat_m_flete_create' %}" class="btn btn-outline-secondary" role="button" title="{% crud_label 'create' %}">
@@ -30,8 +29,6 @@
             <th>Nombre del Proveedor</th>
             <th>Cap. Min. de Tarimas</th>
             <th>Cap. Max de Tarimas</th>
-            <th>Precio</th>
-            <th>Comentarios</th>
             <th colspan="3" class="text-center">
                 {% if perms.catalogos.add_cat_m_flete %}
                 <a data-action="create" href="{% url 'cat_m_flete_create' %}" class="btn btn-outline-secondary" role="button" title="{% crud_label 'create' %}">
@@ -49,8 +46,7 @@
                 <td>{{ reg.NombreProveedor}}</td>
                 <td>{{ reg.CapacidadMinimaTarimas}}</td>
                 <td>{{ reg.CapacidadMaximaTarimas}}</td>
-                <td>{{ reg.Precio}}</td>
-                <td>{{ reg.Comentarios}}</td>
+                
                 <td class="text-center">
                     {% if perms.catalogos.view_cat_m_flete %}
                     <a data-action="read" href="{% url 'cat_m_flete_read' pk=reg.pk %}" class="btn btn-outline-secondary" role="button" title="{% crud_label 'read' %}">

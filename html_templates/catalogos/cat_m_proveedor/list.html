@@ -45,7 +45,7 @@
                 <td>{{ reg.NombreProveedor}}</td>
                 <td>{{ reg.Empresa}}</td>
                 <td>{{ reg.Email}}</td>
-                <td>{{ reg.Telefono1}}</td>
+                <td>{{reg.Telefono1}}</td>
                 <td class="text-center">
                     {% if perms.catalogos.view_cat_m_proveedor %}
                     <a data-action="read" href="{% url 'cat_m_proveedor_read' pk=reg.pk %}" class="btn btn-outline-secondary" role="button" title="{% crud_label 'read' %}">
