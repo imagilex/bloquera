@@ -30,7 +30,7 @@ class List(GenericList):
             return list(
                 data.all())
         else:
-            return list(data.filter(
+            return list(self.data.filter(
                 Q(IDProveedor__icontains=search_value) | Q(NombreContacto__icontains=search_value)))
 
     def get(self, request, pkproveedor):
