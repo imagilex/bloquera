@@ -11,12 +11,7 @@
             <th>Nombre del Vendedor</th>
             <th>TipoCaptacion</th>
             <th>UsoMaterial</th>
-            <th>Constructora</th>
-            <th>Puesto</th>
-            <th>WhatsApp</th>
-            <th>Email</th>
-            <th>Telefono1</th>
-            <th>Estatus</th>
+         
             <th colspan="3" class="text-center">
                 {% if perms.catalogos.add_cat_m_prospecto %}
                 <a data-action="create" href="{% url 'cat_m_prospecto_create' %}" class="btn btn-outline-secondary" role="button" title="{% crud_label 'create' %}">
@@ -33,12 +28,7 @@
             <th>Nombre del Vendedor</th>
             <th>TipoCaptacion</th>
             <th>UsoMaterial</th>
-            <th>Constructora</th>
-            <th>Puesto</th>
-            <th>WhatsApp</th>
-            <th>Email</th>
-            <th>Telefono</th>
-            <th>Estatus</th>
+         
             <th colspan="3" class="text-center">
                 {% if perms.catalogos.add_cat_m_prospecto %}
                 <a data-action="create" href="{% url 'cat_m_prospecto_create' %}" class="btn btn-outline-secondary" role="button" title="{% crud_label 'create' %}">
@@ -57,12 +47,9 @@
                 <td>{{ reg.TipoCaptacion}}</td>
                 <td>{{ reg.UsoMaterial}}</td>
                 <td>{{ reg.Constructora}}</td>
-                <td>{{ reg.Puesto}}</td>
-                <td>{{ reg.WhatsApp}}</td>
-                <td>{{ reg.Email}}</td>
-                <td>{{ reg.Telefono1}}</td>
-                <td>{{ reg.Estatus}}</td>
+              
                 <td> <a href="{% url "cat_d_prospecto_list" pkprospecto=reg.IDProspecto %}">Detalle</a></td>
+
                 <td class="text-center">
                     {% if perms.catalogos.view_cat_m_prospecto %}
                     <a data-action="read" href="{% url 'cat_m_prospecto_read' pk=reg.pk %}" class="btn btn-outline-secondary" role="button" title="{% crud_label 'read' %}">
