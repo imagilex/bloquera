@@ -30,7 +30,7 @@ class List(GenericList):
             return list(
                 data.all())
         else:
-            return list(self.main_data_model.objects.filter(
+            return list(data.filter(
                 Q(Prospecto__icontains=search_value) | Q(FechaNota__icontains=search_value)))
     
     def get(self, request, pkprospecto):
