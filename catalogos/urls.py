@@ -14,4 +14,5 @@ urlpatterns = [
     path('caja_banco/', include('catalogos.cat_m_cajabanco_urls')),
     path('empleados/', include('catalogos.cat_m_empleado_urls')),
 
+
 ]
