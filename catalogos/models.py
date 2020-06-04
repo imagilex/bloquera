@@ -188,7 +188,7 @@ class Cat_M_Cliente(models.Model):
     ctlFecha  = models.DateTimeField(default=timezone.now)
 
     def __str__(self):
-         return self.NombreCliente
+         return self.NombreCliente + " " + self.Empresa 
   
 class Cat_D_ClienteSucursal(models.Model):
 #Clientes Sucursales
