@@ -1,5 +1,9 @@
+from django.contrib.auth.decorators import permission_required
 from django.urls import include
 from django.urls import path
+
+from .vista_submenu_vw import SubMenu
+
 
 urlpatterns = [
     path('inventario/', include('catalogos.cat_m_inventario_urls')),
@@ -13,6 +17,6 @@ urlpatterns = [
     path('flete/', include('catalogos.cat_m_flete_urls')),
     path('caja_banco/', include('catalogos.cat_m_cajabanco_urls')),
     path('empleados/', include('catalogos.cat_m_empleado_urls')),
-
-
+    path('submenu/', SubMenu.as_view(),name="SubMenu"),
+    
 ]
