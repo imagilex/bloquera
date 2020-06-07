@@ -264,7 +264,7 @@ class Cat_D_Prospecto(models.Model):
     ctlfecha = models.DateTimeField(default=timezone.now)
 
     def __str__(self):
-        return self.Prospecto
+        return self.Seguimiento
 
 class Cat_M_Empleado(models.Model):
 #Catalogo Empleados

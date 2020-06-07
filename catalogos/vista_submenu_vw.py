@@ -10,9 +10,9 @@ class SubMenu(View):
 
     def get(self, request):
         return render(request, "catalogos/vista_submenu/submenu.html", {
-            'titulo': "Menu Principal",
+            'titulo': "Catalogos",
             'titulo_descripcion': '',
-            'toolbar': None,
+            'toolbar': False,
             'footer': False,
             'read_only': True,
             'alertas': [],

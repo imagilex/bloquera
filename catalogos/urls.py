@@ -3,7 +3,7 @@ from django.urls import include
 from django.urls import path
 
 from .vista_submenu_vw import SubMenu
-
+import catalogos.vista_submenu_vw as views
 
 urlpatterns = [
     path('inventario/', include('catalogos.cat_m_inventario_urls')),
@@ -18,5 +18,7 @@ urlpatterns = [
     path('caja_banco/', include('catalogos.cat_m_cajabanco_urls')),
     path('empleados/', include('catalogos.cat_m_empleado_urls')),
     path('submenu/', SubMenu.as_view(),name="SubMenu"),
-    
+    #path('submenu', permission_required(catalogos.view_SubMenu')(views.List.as_view()),
+     #   name=f"{SubMenu}_list"),
+
 ]
