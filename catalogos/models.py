@@ -167,7 +167,7 @@ class Cat_D_ProveedorContacto(models.Model):
     ctlfecha = models.DateTimeField(default=timezone.now)
 
     def __str__(self):
-         return self.NombreContacto
+        return self.NombreContacto
 
 class Cat_M_Cliente(models.Model):
 #Catalogo Cientes
@@ -188,7 +188,7 @@ class Cat_M_Cliente(models.Model):
     ctlFecha  = models.DateTimeField(default=timezone.now)
 
     def __str__(self):
-         return self.NombreCliente + " " + self.Empresa 
+        return self.NombreCliente + " " + self.Empresa 
   
 class Cat_D_ClienteSucursal(models.Model):
 #Clientes Sucursales
@@ -208,7 +208,7 @@ class Cat_D_ClienteSucursal(models.Model):
     ctlfecha = models.DateTimeField(default=timezone.now)
 
     def __str__(self):
-         return self.NombreContacto
+        return self.NombreContacto
 
 class Cat_M_Prospecto(models.Model):
 #Catalogo Prospectos
@@ -246,25 +246,25 @@ class Cat_M_Prospecto(models.Model):
         return self.NombreProspecto
 
 class Cat_D_Prospecto(models.Model):
-#Detalle SeguimientoProspectos
+    #Detalle SeguimientoProspectos
     #IDProspecto = models.ForeignKey(Cat_M_Vendedor, null= False, blank = True,
-     #             on_delete = models.CASCADE,help_text='Ingrese ID Prospecto',
-     #             )
+    #             on_delete = models.CASCADE,help_text='Ingrese ID Prospecto',
+    #             )
     Prospecto = models.ForeignKey(Cat_M_Prospecto, null= False, blank = True,
                   on_delete = models.CASCADE,help_text='Ingrese Prospecto',
                   )
-#models.CharField(max_length=100,blank=False,null=False)    
-#	Id Prospecto
+    #models.CharField(max_length=100,blank=False,null=False)    
+    #	Id Prospecto
     FechaNota = models.DateTimeField(default=timezone.now)
     ProximoSeguimiento = models.DateTimeField(default=timezone.now)
-#	Próxima Fecha seguimiento
+    #	Próxima Fecha seguimiento
     Seguimiento = models.TextField()
-#	Descripción Acuerdos
+    #	Descripción Acuerdos
     ctlusuario = models.CharField(max_length=30,blank=False,null=False)
     ctlfecha = models.DateTimeField(default=timezone.now)
 
     def __str__(self):
-        return self.Prospecto
+        return self.Seguimiento
 
 class Cat_M_Empleado(models.Model):
 #Catalogo Empleados

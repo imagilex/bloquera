@@ -61,6 +61,7 @@ class Read(GenericRead):
     model_name = "cat_d_clientesucursal"
     base_data_form = base_form
     main_data_model = main_model
+    
     def get(self, request, pk):
         if not self.main_data_model.objects.filter(pk=pk).exists():
             return HttpResponseRedirect(reverse('item_no_encontrado'))
