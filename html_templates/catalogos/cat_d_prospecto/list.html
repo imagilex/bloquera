@@ -60,7 +60,7 @@
                 </td>
                 <td class="text-center">
                     {% if perms.catalogos.delete_cat_d_prospecto %}
-                    <button data-action="delete" onclick="App.showDeletingConfirmation(`{% url 'cat_m_cliente_delete' pk=reg.pk %}`, `Registro`)" type="button" class="btn btn-outline-secondary" title="{% crud_label 'delete' %}">
+                    <button data-action="delete" onclick="App.showDeletingConfirmation(`{% url 'cat_d_prospecto_delete' pk=reg.pk %}`, `Registro`)" type="button" class="btn btn-outline-secondary" title="{% crud_label 'delete' %}">
                         {% crud_icon 'delete' %}
                     </button>
                     {% endif %}
