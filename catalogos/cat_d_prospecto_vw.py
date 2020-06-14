@@ -71,7 +71,7 @@ class Read(GenericRead):
                 f"catalogos.view_cat_d_prospecto"):
             toolbar.append({
                 'type': 'rlink',
-                'url': reverse('cat_d_prospecto_list',kwargs={'pkprospecto':obj.pk}),
+                'url': reverse('cat_d_prospecto_list',kwargs={'pkprospecto':obj.Prospecto.pk}),
                 'label': crud_smart_button('list')})
         if request.user.has_perm(
                 f"catalogos.change_cat_d_prospecto"):
@@ -115,3 +115,15 @@ class Update(GenericUpdate):
 class Delete(GenericDelete):
     model_name = "cat_d_prospecto"
     main_data_model = main_model
+
+    def get(self, request, pk):
+        if not self.main_data_model.objects.filter(pk=pk).exists():
+            return HttpResponseRedirect(reverse('item_no_encontrado'))
+        obj = self.main_data_model.objects.get(pk=pk)
+        try:
+            obj.delete()
+            return HttpResponseRedirect(reverse('cat_d_prospecto_list',kwargs={'pkprospecto':obj.Prospecto.pk}))
+        except ProtectedError:
+            return HttpResponseRedirect(reverse('item_con_relaciones'))
+        except IntegrityError:
+            return HttpResponseRedirect(reverse('item_con_relaciones'))
